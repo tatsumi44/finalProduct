@@ -145,6 +145,4 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         appDelegate.sectionID = self.sectionID
     }
     
-    
-    
 }

@@ -117,7 +117,7 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         
         let cellSize1:CGFloat = mainCollectionView.frame.size.width/2-5.0
         let cellSize2: CGFloat = mainCollectionView.frame.size.height/2
-        // 正方形で返すためにwidth,heightを同じにする
+        
         return CGSize(width: cellSize1, height: cellSize2)
     }
     
