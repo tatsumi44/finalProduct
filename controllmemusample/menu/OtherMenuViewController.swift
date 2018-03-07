@@ -57,15 +57,20 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
                 print("error")
             }else{
                 let data = snap?.data()
-                let profilePath = data!["profilePath"] as! String
-                ref.child("image").child("profile").child(profilePath).downloadURL { url, error in
-                    if let error = error {
-                        // Handle any errors
-                    } else {
-                        //imageViewに描画、SDWebImageライブラリを使用して描画
-                        self.imageView.sd_setImage(with: url!, completed: nil)
+                
+                if let profilePath = data!["profilePath"]{
+                    ref.child("image").child("profile").child(profilePath as! String).downloadURL { url, error in
+                        if let error = error {
+                            // Handle any errors
+                        } else {
+                            //imageViewに描画、SDWebImageライブラリを使用して描画
+                            self.imageView.sd_setImage(with: url!, completed: nil)
+                        }
                     }
+                }else{
+                    print("nil")
                 }
+               
             }
         }
     }

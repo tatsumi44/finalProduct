@@ -29,6 +29,11 @@
 		B97F9CE3204A8A5200EADB20 /* trade.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE2204A8A5200EADB20 /* trade.png */; };
 		B97F9CE5204A8A6F00EADB20 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE4204A8A6F00EADB20 /* chat.png */; };
 		B97F9CEB204BFCB300EADB20 /* IMG_1827.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CEA204BFCB200EADB20 /* IMG_1827.png */; };
+		B97F9CED204E966F00EADB20 /* event.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CEC204E966E00EADB20 /* event.png */; };
+		B97F9CF0204E973300EADB20 /* D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CEF204E973300EADB20 /* D.storyboard */; };
+		B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CF3204E984800EADB20 /* EventViewController.swift */; };
+		B97F9CF6204E9FF200EADB20 /* EventPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */; };
+		B97F9CFB204ECB7600EADB20 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CFA204ECB7600EADB20 /* Event.swift */; };
 		B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C2204560E000EC7108 /* PurchasedViewController.swift */; };
 		B99025C520456A4700EC7108 /* PurchasedDetailChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */; };
 		B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */; };
@@ -75,6 +80,11 @@
 		B97F9CE2204A8A5200EADB20 /* trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trade.png; sourceTree = "<group>"; };
 		B97F9CE4204A8A6F00EADB20 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		B97F9CEA204BFCB200EADB20 /* IMG_1827.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1827.png; sourceTree = "<group>"; };
+		B97F9CEC204E966E00EADB20 /* event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event.png; sourceTree = "<group>"; };
+		B97F9CEF204E973300EADB20 /* D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = D.storyboard; sourceTree = "<group>"; };
+		B97F9CF3204E984800EADB20 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostViewController.swift; sourceTree = "<group>"; };
+		B97F9CFA204ECB7600EADB20 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B99025C2204560E000EC7108 /* PurchasedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedViewController.swift; sourceTree = "<group>"; };
 		B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedDetailChatViewController.swift; sourceTree = "<group>"; };
 		B9D7D8DA203F2FA00028EF07 /* controllmemusample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controllmemusample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +199,29 @@
 			path = chatOverview;
 			sourceTree = "<group>";
 		};
+		B97F9CEE204E967700EADB20 /* resourse */ = {
+			isa = PBXGroup;
+			children = (
+				B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */,
+				B97F9CEC204E966E00EADB20 /* event.png */,
+				B97F9CE2204A8A5200EADB20 /* trade.png */,
+				B97F9CE4204A8A6F00EADB20 /* chat.png */,
+				B97F9CE0204A8A3300EADB20 /* option.png */,
+			);
+			path = resourse;
+			sourceTree = "<group>";
+		};
+		B97F9CF7204EA0C100EADB20 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				B97F9CEF204E973300EADB20 /* D.storyboard */,
+				B97F9CF3204E984800EADB20 /* EventViewController.swift */,
+				B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */,
+				B97F9CFA204ECB7600EADB20 /* Event.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		B9D7D8D1203F2FA00028EF07 = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */,
-				B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */,
-				B97F9CE2204A8A5200EADB20 /* trade.png */,
-				B97F9CE4204A8A6F00EADB20 /* chat.png */,
-				B97F9CE0204A8A3300EADB20 /* option.png */,
+				B97F9CEE204E967700EADB20 /* resourse */,
 				B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */,
 				B9D7D8DF203F2FA00028EF07 /* ViewController.swift */,
 				B935015620403554000F554B /* Auth */,
@@ -227,6 +257,7 @@
 				B9D7D8E6203F2FA00028EF07 /* LaunchScreen.storyboard */,
 				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
 				B93501A52045484E000F554B /* chatOverview */,
+				B97F9CF7204EA0C100EADB20 /* Event */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -320,6 +351,7 @@
 				B935015D20412609000F554B /* ProductContribution.storyboard in Resources */,
 				B9D7D8E8203F2FA00028EF07 /* LaunchScreen.storyboard in Resources */,
 				B97F9CEB204BFCB300EADB20 /* IMG_1827.png in Resources */,
+				B97F9CED204E966F00EADB20 /* event.png in Resources */,
 				B93501962043E5FC000F554B /* next22.png in Resources */,
 				B9D7D90A204026590028EF07 /* Kanematsu_auditorium.jpg in Resources */,
 				B917CF402049230C0074B846 /* Post.png in Resources */,
@@ -332,6 +364,7 @@
 				B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */,
 				B93501952043E5FC000F554B /* back22.png in Resources */,
 				B97F9CE1204A8A3300EADB20 /* option.png in Resources */,
+				B97F9CF0204E973300EADB20 /* D.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,17 +458,20 @@
 				B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */,
 				B935019B20440CB0000F554B /* ChatViewController.swift in Sources */,
 				B93501922043D7BA000F554B /* ProductDetailViewController.swift in Sources */,
+				B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */,
 				B9D7D8FC203F33970028EF07 /* PageViewController.swift in Sources */,
 				B9D7D8E0203F2FA00028EF07 /* ViewController.swift in Sources */,
 				B917CF4220497D3A0074B846 /* ChatList.swift in Sources */,
 				B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */,
 				B9D7D900203F35910028EF07 /* SecondViewController.swift in Sources */,
 				B93501A42045482D000F554B /* ChatDetailViewController.swift in Sources */,
+				B97F9CFB204ECB7600EADB20 /* Event.swift in Sources */,
 				B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */,
 				B917CF442049A83E0074B846 /* PurchasedChatlist.swift in Sources */,
 				B935016120413CB2000F554B /* ProductContoributionViewController.swift in Sources */,
 				B9D7D902203F35AF0028EF07 /* ThirdViewController.swift in Sources */,
 				B9D7D90C2040274C0028EF07 /* FirstSelectViewController.swift in Sources */,
+				B97F9CF6204E9FF200EADB20 /* EventPostViewController.swift in Sources */,
 				B935019E2045316D000F554B /* ChatListViewController.swift in Sources */,
 				B9D7D91220402A480028EF07 /* EmailRegisterViewController.swift in Sources */,
 				B935015F20413ACF000F554B /* CategorySelectViewController.swift in Sources */,
