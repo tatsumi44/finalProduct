@@ -65,7 +65,15 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
         titleLabel.text = self.eventArray[indexPath.row].eventTitle
         detailLabel.text = self.eventArray[indexPath.row].evetDetail
         dateLabel.text = self.eventArray[indexPath.row].eventDate
-        nameLabel.text = "辰巳"
+        db.collection("users").document(eventArray[indexPath.row].postUserID).getDocument { (snap, error) in
+            if let error = error{
+                print("error")
+            }else{
+                let data = snap?.data()
+                nameLabel.text = data!["name"] as? String
+            }
+        }
+//        nameLabel.text = "辰巳"
         return cell!
     }
 

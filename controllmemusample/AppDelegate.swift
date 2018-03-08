@@ -47,10 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewControllers.append(thirdVC)
         
         // 4ページ目になるViewController
-        let fourthSB = UIStoryboard(name: "B", bundle: nil)
+        let fourthSB = UIStoryboard(name: "E", bundle: nil)
         let fourthVC = fourthSB.instantiateInitialViewController()! as UIViewController
-        fourthVC.tabBarItem = UITabBarItem(title: "その他", image: UIImage(named:"option.png"), tag: 4)
+        fourthVC.tabBarItem = UITabBarItem(title: "授業評価", image: UIImage(named:"curriculum.png"), tag: 4)
         viewControllers.append(fourthVC)
+        
+        // 5ページ目になるViewController
+        let fifthSB = UIStoryboard(name: "B", bundle: nil)
+        let fifthVC = fifthSB.instantiateInitialViewController()! as UIViewController
+        fifthVC.tabBarItem = UITabBarItem(title: "その他", image: UIImage(named:"option.png"), tag: 5)
+        viewControllers.append(fifthVC)
+        
         
         // ViewControllerをセット
         let tabBarController = UITabBarController()
@@ -59,7 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.setViewControllers(viewControllers, animated: false)
         
         // rootViewControllerをUITabBarControllerにする
-        window = UIWindow()
+//        window = UIWindow()
+        if Auth.auth().currentUser != nil{
+            
+        }
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
      return true

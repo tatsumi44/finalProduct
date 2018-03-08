@@ -38,9 +38,19 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         mainCollectionView.delegate = self
         
         
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if Auth.auth().currentUser != nil{
+            print("ユーザーいるよ")
+            
+        }else{
+            print("戻ろうか")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            let nextView = storyboard.instantiateInitialViewController()
+            present(nextView!, animated: true, completion: nil)
+        }
         
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.photoCount = appDelegate.photoCount

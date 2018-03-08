@@ -36,9 +36,9 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         db = Firestore.firestore()
+        db = Firestore.firestore()
         imageCollectionView.dataSource = self
-         let user = Auth.auth().currentUser
+        let user = Auth.auth().currentUser
         uid = user?.uid
         productNameTextField.delegate = self
         priceTextField.delegate = self

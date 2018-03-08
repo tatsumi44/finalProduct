@@ -52,25 +52,28 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
             present(nextView!, animated: true, completion: nil)
             print("ログインいるで")
         }
-        db.collection("users").document(uid).getDocument { (snap, error) in
-            if let error = error{
-                print("error")
-            }else{
-                let data = snap?.data()
-                
-                if let profilePath = data!["profilePath"]{
-                    ref.child("image").child("profile").child(profilePath as! String).downloadURL { url, error in
-                        if let error = error {
-                            // Handle any errors
-                        } else {
-                            //imageViewに描画、SDWebImageライブラリを使用して描画
-                            self.imageView.sd_setImage(with: url!, completed: nil)
-                        }
-                    }
+        
+        if Auth.auth().currentUser != nil{
+            
+            db.collection("users").document(uid).getDocument { (snap, error) in
+                if let error = error{
+                    print("error")
                 }else{
-                    print("nil")
+                    let data = snap?.data()
+                    
+                    if let profilePath = data!["profilePath"]{
+                        ref.child("image").child("profile").child(profilePath as! String).downloadURL { url, error in
+                            if let error = error {
+                                // Handle any errors
+                            } else {
+                                //imageViewに描画、SDWebImageライブラリを使用して描画
+                                self.imageView.sd_setImage(with: url!, completed: nil)
+                            }
+                        }
+                    }else{
+                        print("nil")
+                    }
                 }
-               
             }
         }
     }

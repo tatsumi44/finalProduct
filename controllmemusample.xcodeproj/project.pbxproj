@@ -34,6 +34,10 @@
 		B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CF3204E984800EADB20 /* EventViewController.swift */; };
 		B97F9CF6204E9FF200EADB20 /* EventPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */; };
 		B97F9CFB204ECB7600EADB20 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9CFA204ECB7600EADB20 /* Event.swift */; };
+		B97F9D1B2050C3BF00EADB20 /* E.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97F9D1A2050C3BF00EADB20 /* E.storyboard */; };
+		B97F9D1D2050C55100EADB20 /* CurriculumEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */; };
+		B97F9D1F2050C5DE00EADB20 /* curriculum.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9D1E2050C5DE00EADB20 /* curriculum.png */; };
+		B97F9D212050D23B00EADB20 /* PostEvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */; };
 		B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C2204560E000EC7108 /* PurchasedViewController.swift */; };
 		B99025C520456A4700EC7108 /* PurchasedDetailChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */; };
 		B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */; };
@@ -85,6 +89,10 @@
 		B97F9CF3204E984800EADB20 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostViewController.swift; sourceTree = "<group>"; };
 		B97F9CFA204ECB7600EADB20 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B97F9D1A2050C3BF00EADB20 /* E.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = E.storyboard; sourceTree = "<group>"; };
+		B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumEvaluationViewController.swift; sourceTree = "<group>"; };
+		B97F9D1E2050C5DE00EADB20 /* curriculum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curriculum.png; sourceTree = "<group>"; };
+		B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEvaluationViewController.swift; sourceTree = "<group>"; };
 		B99025C2204560E000EC7108 /* PurchasedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedViewController.swift; sourceTree = "<group>"; };
 		B99025C420456A4700EC7108 /* PurchasedDetailChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedDetailChatViewController.swift; sourceTree = "<group>"; };
 		B9D7D8DA203F2FA00028EF07 /* controllmemusample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controllmemusample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +212,7 @@
 			children = (
 				B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */,
 				B97F9CEC204E966E00EADB20 /* event.png */,
+				B97F9D1E2050C5DE00EADB20 /* curriculum.png */,
 				B97F9CE2204A8A5200EADB20 /* trade.png */,
 				B97F9CE4204A8A6F00EADB20 /* chat.png */,
 				B97F9CE0204A8A3300EADB20 /* option.png */,
@@ -258,6 +267,9 @@
 				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
 				B93501A52045484E000F554B /* chatOverview */,
 				B97F9CF7204EA0C100EADB20 /* Event */,
+				B97F9D1A2050C3BF00EADB20 /* E.storyboard */,
+				B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */,
+				B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -345,11 +357,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B97F9D1F2050C5DE00EADB20 /* curriculum.png in Resources */,
 				B935019920440B86000F554B /* Chat.storyboard in Resources */,
 				B9D7D90820401C470028EF07 /* Login.storyboard in Resources */,
 				B9D7D8F0203F2FE60028EF07 /* A.storyboard in Resources */,
 				B935015D20412609000F554B /* ProductContribution.storyboard in Resources */,
 				B9D7D8E8203F2FA00028EF07 /* LaunchScreen.storyboard in Resources */,
+				B97F9D1B2050C3BF00EADB20 /* E.storyboard in Resources */,
 				B97F9CEB204BFCB300EADB20 /* IMG_1827.png in Resources */,
 				B97F9CED204E966F00EADB20 /* event.png in Resources */,
 				B93501962043E5FC000F554B /* next22.png in Resources */,
@@ -467,6 +481,7 @@
 				B93501A42045482D000F554B /* ChatDetailViewController.swift in Sources */,
 				B97F9CFB204ECB7600EADB20 /* Event.swift in Sources */,
 				B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */,
+				B97F9D1D2050C55100EADB20 /* CurriculumEvaluationViewController.swift in Sources */,
 				B917CF442049A83E0074B846 /* PurchasedChatlist.swift in Sources */,
 				B935016120413CB2000F554B /* ProductContoributionViewController.swift in Sources */,
 				B9D7D902203F35AF0028EF07 /* ThirdViewController.swift in Sources */,
@@ -474,6 +489,7 @@
 				B97F9CF6204E9FF200EADB20 /* EventPostViewController.swift in Sources */,
 				B935019E2045316D000F554B /* ChatListViewController.swift in Sources */,
 				B9D7D91220402A480028EF07 /* EmailRegisterViewController.swift in Sources */,
+				B97F9D212050D23B00EADB20 /* PostEvaluationViewController.swift in Sources */,
 				B935015F20413ACF000F554B /* CategorySelectViewController.swift in Sources */,
 				B9D7D8FE203F35740028EF07 /* FirstViewController.swift in Sources */,
 				B99025C520456A4700EC7108 /* PurchasedDetailChatViewController.swift in Sources */,
