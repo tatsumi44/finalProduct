@@ -25,6 +25,7 @@
 		B935019E2045316D000F554B /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B935019D2045316D000F554B /* ChatListViewController.swift */; };
 		B93501A0204536A8000F554B /* SelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B935019F204536A8000F554B /* SelectListViewController.swift */; };
 		B93501A42045482D000F554B /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93501A32045482D000F554B /* ChatDetailViewController.swift */; };
+		B93C8AF920511769007ABFA7 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C8AF820511769007ABFA7 /* Evaluation.swift */; };
 		B97F9CE1204A8A3300EADB20 /* option.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE0204A8A3300EADB20 /* option.png */; };
 		B97F9CE3204A8A5200EADB20 /* trade.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE2204A8A5200EADB20 /* trade.png */; };
 		B97F9CE5204A8A6F00EADB20 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE4204A8A6F00EADB20 /* chat.png */; };
@@ -80,6 +81,7 @@
 		B935019D2045316D000F554B /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		B935019F204536A8000F554B /* SelectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListViewController.swift; sourceTree = "<group>"; };
 		B93501A32045482D000F554B /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		B93C8AF820511769007ABFA7 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		B97F9CE0204A8A3300EADB20 /* option.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = option.png; sourceTree = "<group>"; };
 		B97F9CE2204A8A5200EADB20 /* trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trade.png; sourceTree = "<group>"; };
 		B97F9CE4204A8A6F00EADB20 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
@@ -207,6 +209,17 @@
 			path = chatOverview;
 			sourceTree = "<group>";
 		};
+		B93C8AF72051172A007ABFA7 /* evaluation */ = {
+			isa = PBXGroup;
+			children = (
+				B97F9D1A2050C3BF00EADB20 /* E.storyboard */,
+				B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */,
+				B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */,
+				B93C8AF820511769007ABFA7 /* Evaluation.swift */,
+			);
+			path = evaluation;
+			sourceTree = "<group>";
+		};
 		B97F9CEE204E967700EADB20 /* resourse */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,9 +280,7 @@
 				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
 				B93501A52045484E000F554B /* chatOverview */,
 				B97F9CF7204EA0C100EADB20 /* Event */,
-				B97F9D1A2050C3BF00EADB20 /* E.storyboard */,
-				B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */,
-				B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */,
+				B93C8AF72051172A007ABFA7 /* evaluation */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -470,6 +481,7 @@
 				B935015A20404D08000F554B /* OtherMenuViewController.swift in Sources */,
 				B9D7D910204027850028EF07 /* RegisterViewController.swift in Sources */,
 				B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */,
+				B93C8AF920511769007ABFA7 /* Evaluation.swift in Sources */,
 				B935019B20440CB0000F554B /* ChatViewController.swift in Sources */,
 				B93501922043D7BA000F554B /* ProductDetailViewController.swift in Sources */,
 				B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */,
