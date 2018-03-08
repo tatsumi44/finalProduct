@@ -21,6 +21,7 @@ class CurriculumEvaluationViewController: UIViewController,UITableViewDataSource
         super.viewDidLoad()
         postButtonItem.tintColor = UIColor.orange
         mainTable.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
