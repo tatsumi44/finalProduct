@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate {
     
     
     
@@ -64,6 +64,7 @@ class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         courseTimeTextField.inputView = pickerView3
         classEvaluationTextField.inputView = pickerView4
         differentTextField.inputView = pickerView5
+        classANmeTextField.delegate = self
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
@@ -158,6 +159,8 @@ class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     
     @IBAction func searchButton(_ sender: Any) {
         
+        tagArray = [[String]]()
+        
         if classANmeTextField.text?.isEmpty != true {
             tagArray.append(["courseName",classANmeTextField.text!])
         }else{
@@ -191,7 +194,7 @@ class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
             print("難易度はから")
         }
         if courseTextField.text?.isEmpty != true{
-            tagArray.append(["courseName", courseTextField.text!])
+            tagArray.append(["course", courseTextField.text!])
         }else{
             print("学部名は空です")
         }
@@ -201,7 +204,7 @@ class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
             return
         }
         print("何か入力してください")
-        return
+       
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextList"{
@@ -209,5 +212,10 @@ class ClassSarchViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
             searchListContoroller.tagArray = self.tagArray
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

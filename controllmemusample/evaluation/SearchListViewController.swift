@@ -9,12 +9,11 @@
 import UIKit
 import Firebase
 
-class SearchListViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate {
+class SearchListViewController: UIViewController,UITableViewDataSource{
     
     @IBOutlet var mainTable: UITableView!
     var tagArray = [[String]]()
     var db: Firestore!
-    var contentsNum: Int!
     var evaluationArray = [Evaluation]()
     
     
@@ -29,8 +28,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource,UITextFie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         evaluationArray = [Evaluation]()
-        print(tagArray[0][0])
-        print(tagArray[0][1])
+        print(tagArray.count)
+        print(tagArray)
         db = Firestore.firestore()
         switch tagArray.count {
         case 1:
@@ -138,7 +137,25 @@ class SearchListViewController: UIViewController,UITableViewDataSource,UITextFie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = evaluationArray[indexPath.row].className
+        let courseName = cell.contentView.viewWithTag(1) as! UILabel
+        let year = cell.contentView.viewWithTag(2) as! UILabel
+        let course = cell.contentView.viewWithTag(3) as! UILabel
+        let dayOfTheWeek = cell.contentView.viewWithTag(4) as! UILabel
+        let courseTime = cell.contentView.viewWithTag(5) as! UILabel
+        let courseEvaluation = cell.contentView.viewWithTag(6) as! UILabel
+        let different = cell.contentView.viewWithTag(7) as! UILabel
+        let coursedetail = cell.contentView.viewWithTag(8) as! UILabel
+        
+        courseName.text = evaluationArray[indexPath.row].className
+        year.text = evaluationArray[indexPath.row].year
+        course.text = evaluationArray[indexPath.row].course
+        dayOfTheWeek.text = evaluationArray[indexPath.row].dayOfTheWeek
+        courseTime.text = evaluationArray[indexPath.row].courseTime
+        courseEvaluation.text = "授業評価　\(evaluationArray[indexPath.row].courseEvaluation!)"
+        courseEvaluation.textColor = UIColor.red
+        different.text = "難易度　\(evaluationArray[indexPath.row].different!)"
+        different.textColor = UIColor.red
+        coursedetail.text = evaluationArray[indexPath.row].coursedetail
         return cell
     }
     
