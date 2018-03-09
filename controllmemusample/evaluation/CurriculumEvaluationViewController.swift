@@ -73,7 +73,9 @@ class CurriculumEvaluationViewController: UIViewController,UITableViewDataSource
         dayOfTheWeek.text = evaluationArray[indexPath.row].dayOfTheWeek
         courseTime.text = evaluationArray[indexPath.row].courseTime
         courseEvaluation.text = "授業評価　\(evaluationArray[indexPath.row].courseEvaluation!)"
+        courseEvaluation.textColor = UIColor.red
         different.text = "難易度　\(evaluationArray[indexPath.row].different!)"
+        different.textColor = UIColor.red
         coursedetail.text = evaluationArray[indexPath.row].coursedetail
         
         return cell

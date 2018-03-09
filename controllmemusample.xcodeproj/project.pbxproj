@@ -26,6 +26,8 @@
 		B93501A0204536A8000F554B /* SelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B935019F204536A8000F554B /* SelectListViewController.swift */; };
 		B93501A42045482D000F554B /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93501A32045482D000F554B /* ChatDetailViewController.swift */; };
 		B93C8AF920511769007ABFA7 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C8AF820511769007ABFA7 /* Evaluation.swift */; };
+		B93C8AFB2052A50D007ABFA7 /* ClassSarchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C8AFA2052A50D007ABFA7 /* ClassSarchViewController.swift */; };
+		B93C8AFD2052D0B2007ABFA7 /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C8AFC2052D0B2007ABFA7 /* SearchListViewController.swift */; };
 		B97F9CE1204A8A3300EADB20 /* option.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE0204A8A3300EADB20 /* option.png */; };
 		B97F9CE3204A8A5200EADB20 /* trade.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE2204A8A5200EADB20 /* trade.png */; };
 		B97F9CE5204A8A6F00EADB20 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = B97F9CE4204A8A6F00EADB20 /* chat.png */; };
@@ -82,6 +84,8 @@
 		B935019F204536A8000F554B /* SelectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListViewController.swift; sourceTree = "<group>"; };
 		B93501A32045482D000F554B /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		B93C8AF820511769007ABFA7 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
+		B93C8AFA2052A50D007ABFA7 /* ClassSarchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSarchViewController.swift; sourceTree = "<group>"; };
+		B93C8AFC2052D0B2007ABFA7 /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		B97F9CE0204A8A3300EADB20 /* option.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = option.png; sourceTree = "<group>"; };
 		B97F9CE2204A8A5200EADB20 /* trade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trade.png; sourceTree = "<group>"; };
 		B97F9CE4204A8A6F00EADB20 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				B97F9D1A2050C3BF00EADB20 /* E.storyboard */,
 				B97F9D1C2050C55100EADB20 /* CurriculumEvaluationViewController.swift */,
 				B97F9D202050D23B00EADB20 /* PostEvaluationViewController.swift */,
+				B93C8AFA2052A50D007ABFA7 /* ClassSarchViewController.swift */,
+				B93C8AFC2052D0B2007ABFA7 /* SearchListViewController.swift */,
 				B93C8AF820511769007ABFA7 /* Evaluation.swift */,
 			);
 			path = evaluation;
@@ -490,6 +496,7 @@
 				B917CF4220497D3A0074B846 /* ChatList.swift in Sources */,
 				B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */,
 				B9D7D900203F35910028EF07 /* SecondViewController.swift in Sources */,
+				B93C8AFD2052D0B2007ABFA7 /* SearchListViewController.swift in Sources */,
 				B93501A42045482D000F554B /* ChatDetailViewController.swift in Sources */,
 				B97F9CFB204ECB7600EADB20 /* Event.swift in Sources */,
 				B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */,
@@ -499,6 +506,7 @@
 				B9D7D902203F35AF0028EF07 /* ThirdViewController.swift in Sources */,
 				B9D7D90C2040274C0028EF07 /* FirstSelectViewController.swift in Sources */,
 				B97F9CF6204E9FF200EADB20 /* EventPostViewController.swift in Sources */,
+				B93C8AFB2052A50D007ABFA7 /* ClassSarchViewController.swift in Sources */,
 				B935019E2045316D000F554B /* ChatListViewController.swift in Sources */,
 				B9D7D91220402A480028EF07 /* EmailRegisterViewController.swift in Sources */,
 				B97F9D212050D23B00EADB20 /* PostEvaluationViewController.swift in Sources */,

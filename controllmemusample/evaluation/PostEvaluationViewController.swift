@@ -64,6 +64,7 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+       
         toolbar.setItems([doneItem], animated: true)
         yearSelectTextField.inputAccessoryView = toolbar
         courseSelectTextField.inputAccessoryView = toolbar
@@ -71,6 +72,7 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
         courseTimeSelectTextField.inputAccessoryView = toolbar
         courseEvaluationTextField.inputAccessoryView = toolbar
         difflenceTextField.inputAccessoryView = toolbar
+        courseDetailTextField.inputAccessoryView = toolbar
         
         classNameTextField.layer.borderColor = UIColor.black.cgColor
         classNameTextField.layer.borderWidth = 0.3
@@ -209,14 +211,6 @@ class PostEvaluationViewController: UIViewController,UIPickerViewDataSource,UIPi
                 ])
             
             self.navigationController?.popViewController(animated: true)
-        }
-        
-        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if text == "\n" {
-                classNameTextField.resignFirstResponder() //キーボードを閉じる
-                return false
-            }
-            return true
         }
         
     }
