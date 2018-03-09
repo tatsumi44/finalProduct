@@ -8,37 +8,85 @@
 
 import UIKit
 
-class SelectListViewController: UIViewController {
+class SelectListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-
-
-
+    
+    @IBOutlet weak var mainTable: UITableView!
+    
+    let titleArray = ["チャット","商品投稿・いいね","投稿イベント"]
+    let chatArray = ["自分の購入した商品のチャット","購入された商品のチャット"]
+    let postProductArray = ["自分の投稿した商品","自分がいいねした商品"]
+    let postEventArray = ["自分の投稿したイベント"]
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mainTable.dataSource = self
+        mainTable.delegate = self
+        mainTable.rowHeight = 60
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func myBuyButton(_ sender: Any) {
-        performSegue(withIdentifier: "MyBuying", sender: nil)
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return chatArray.count
+        case 1:
+            return postProductArray.count
+        case 2:
+            return postEventArray.count
+        default:
+            return 0
+        }
     }
     
-    @IBAction func mySellButton(_ sender: Any) {
-        performSegue(withIdentifier: "PurchasedList", sender: nil)
-    }
-    
-    @IBAction func back(_ sender: Any) {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "A", bundle: nil)
-//        let nextView = storyboard.instantiateInitialViewController()
-//        present(nextView!, animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        switch indexPath.section {
+        case 0:
+            cell.textLabel?.text = chatArray[indexPath.row]
+        case 1:
+            cell.textLabel?.text = postProductArray[indexPath.row]
+        case 2:
+            cell.textLabel?.text = postEventArray[indexPath.row]
+        default:
+            break
+        }
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
-        dismiss(animated: true, completion: nil)
+        return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        return titleArray[section]
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0{
+            performSegue(withIdentifier: "myBuyingChat", sender: nil)
+        }
+        if indexPath.section == 0 && indexPath.row == 1{
+            performSegue(withIdentifier: "mySelling", sender: nil)
+        }
+        
+        print("section\(indexPath.section),row\(indexPath.row)")
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.textLabel?.textColor = UIColor.orange
+        }
+    }
+    
 }
