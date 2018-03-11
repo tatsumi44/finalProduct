@@ -20,11 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var productid: String!
     var photoCount: Int!
     var sectionID: Int!
+    var posX: CGFloat!
+    var posY: CGFloat!
+    var width: CGFloat!
+    var height: CGFloat!
+    var posArray = [CGFloat]()
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        let db = Firestore.firestore()
         UINavigationBar.appearance().barTintColor = UIColor.white
         var viewControllers: [UIViewController] = []
         
@@ -40,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let secondVC = secondSB.instantiateInitialViewController()! as UIViewController
         secondVC.tabBarItem = UITabBarItem(title: "チャット", image: UIImage(named:"chat.png"), tag: 2)
         viewControllers.append(secondVC)
+        
         // 3ページ目になるViewController
         let thirdSB = UIStoryboard(name: "D", bundle: nil)
         let thirdVC = thirdSB.instantiateInitialViewController()! as UIViewController
@@ -61,6 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ViewControllerをセット
         let tabBarController = UITabBarController()
+        posX = tabBarController.tabBar.frame.origin.x
+        posY = tabBarController.tabBar.frame.origin.y
+        width = tabBarController.tabBar.frame.width
+        height = tabBarController.tabBar.frame.height
+        posArray = [posX,posY,width,height]
+        
         tabBarController.tabBar.unselectedItemTintColor = UIColor.orange
         tabBarController.tabBar.tintColor = UIColor.red
         tabBarController.setViewControllers(viewControllers, animated: false)

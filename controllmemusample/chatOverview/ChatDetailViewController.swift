@@ -52,7 +52,7 @@ class ChatDetailViewController: UIViewController,UITableViewDataSource,UITextFie
         db = Firestore.firestore()
         db.collection("users").document(uid).getDocument { (snap, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 let data = snap?.data()
                 self.myName = data!["name"] as! String

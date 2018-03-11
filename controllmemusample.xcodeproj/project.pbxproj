@@ -61,6 +61,7 @@
 		B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90D204027700028EF07 /* LoginViewController.swift */; };
 		B9D7D910204027850028EF07 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90F204027850028EF07 /* RegisterViewController.swift */; };
 		B9D7D91220402A480028EF07 /* EmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D91120402A480028EF07 /* EmailRegisterViewController.swift */; };
+		B9E32B0120532554009ED8E9 /* MyPostProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9E32B0020532554009ED8E9 /* MyPostProduct.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		B9D7D90D204027700028EF07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B9D7D90F204027850028EF07 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B9D7D91120402A480028EF07 /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
+		B9E32B0020532554009ED8E9 /* MyPostProduct.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPostProduct.storyboard; sourceTree = "<group>"; };
 		E9FE34DCFA13CA0EF4AFE2DE /* Pods-controllmemusample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-controllmemusample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-controllmemusample/Pods-controllmemusample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,21 +274,22 @@
 			isa = PBXGroup;
 			children = (
 				B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */,
-				B97F9CEE204E967700EADB20 /* resourse */,
 				B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */,
 				B9D7D8DF203F2FA00028EF07 /* ViewController.swift */,
+				B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */,
+				B9D7D8E6203F2FA00028EF07 /* LaunchScreen.storyboard */,
+				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
+				B97F9CEE204E967700EADB20 /* resourse */,
 				B935015620403554000F554B /* Auth */,
 				B9D7D90620401B650028EF07 /* PuroductList_storybord */,
 				B935018620430C07000F554B /* ProductContoribute */,
 				B935015B2041255D000F554B /* menu */,
 				B935019C204530F6000F554B /* Chat */,
 				B93501972044032A000F554B /* ProductDetail */,
-				B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */,
-				B9D7D8E6203F2FA00028EF07 /* LaunchScreen.storyboard */,
-				B9D7D8E9203F2FA00028EF07 /* Info.plist */,
 				B93501A52045484E000F554B /* chatOverview */,
 				B97F9CF7204EA0C100EADB20 /* Event */,
 				B93C8AF72051172A007ABFA7 /* evaluation */,
+				B9E32B0020532554009ED8E9 /* MyPostProduct.storyboard */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */,
 				B93501952043E5FC000F554B /* back22.png in Resources */,
 				B97F9CE1204A8A3300EADB20 /* option.png in Resources */,
+				B9E32B0120532554009ED8E9 /* MyPostProduct.storyboard in Resources */,
 				B97F9CF0204E973300EADB20 /* D.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

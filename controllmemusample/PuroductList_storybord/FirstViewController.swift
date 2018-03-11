@@ -27,7 +27,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     var cellOfNum: Int!
     var photoCount: Int!
     let sectionID: Int = 1
-    
+    var posArray = [CGFloat]()
     
     
     
@@ -36,9 +36,9 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         super.viewDidLoad()
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        
-        
-        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        posArray = appDelegate.posArray
+        print(posArray)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

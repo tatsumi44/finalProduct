@@ -41,7 +41,7 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
         db.collection("matchProduct").whereField("buyerID", isEqualTo: uid).getDocuments { (snap, error) in
             
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 for document in (snap?.documents)!{
                     let data = document.data()
@@ -75,14 +75,14 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
         print("refは\(ref)")
         ref.downloadURL { url, error in
             if let error = error {
-                print("error")
+                print("\(error)")
             } else {
                 print(url!)
                 //imageViewに描画、SDWebImageライブラリを使用して描画
                 imageView.sd_setImage(with: url!, completed: nil)
                 self.db.collection("users").document(self.cellDetailArray[indexPath.row].exhibitorID).getDocument(completion: { (snap, error) in
                     if let error = error{
-                        print("error")
+                        print("\(error)")
                     }else{
                         let data = snap?.data()
                         let name: String = data!["name"] as! String

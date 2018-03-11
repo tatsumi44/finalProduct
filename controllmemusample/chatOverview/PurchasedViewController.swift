@@ -40,7 +40,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
         db.collection("matchProduct").whereField("exhibitorID", isEqualTo: uid).getDocuments { (snap, error) in
             
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 for document in (snap?.documents)!{
                     let data = document.data()
@@ -73,6 +73,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
         print("refは\(ref)")
         ref.downloadURL { url, error in
             if let error = error {
+                print("\(error)")
                 // Handle any errors
             } else {
                 print(url!)
@@ -80,7 +81,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
                 imageView.sd_setImage(with: url!, completed: nil)
                 self.db.collection("users").document(self.cellDetailArray[indexPath.row].buyerID).getDocument(completion: { (snap, error) in
                     if let error = error{
-                        print("error")
+                        print("\(error)")
                     }else{
                         let data = snap?.data()
                         let name: String = data!["name"] as! String
