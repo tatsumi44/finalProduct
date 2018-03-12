@@ -73,13 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabBarController.tabBar.unselectedItemTintColor = UIColor.orange
         tabBarController.tabBar.tintColor = UIColor.red
+//        tabBarController.tabBar.backgroundColor = UIColor.black
         tabBarController.setViewControllers(viewControllers, animated: false)
         
         // rootViewControllerをUITabBarControllerにする
-//        window = UIWindow()
-        if Auth.auth().currentUser != nil{
-            
-        }
+        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
      return true

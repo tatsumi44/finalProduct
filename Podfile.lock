@@ -85,6 +85,7 @@ PODS:
     - gRPC-Core (= 1.9.1)
     - gRPC-RxLibrary (= 1.9.1)
   - GTMSessionFetcher/Core (1.1.13)
+  - Instructions (1.0.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseUI/Storage
+  - Instructions (~> 1.0.0)
   - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
@@ -127,12 +129,13 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: f29e8b7445e0d3c0311678ab121e6c164da4ca5e
   gRPC-RxLibrary: 8e0067bfe8a054022c7a81470baace4f2f633b48
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
+  Instructions: 11b6744e572b8cab6f61e9445403cb95fcde68f1
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
 
-PODFILE CHECKSUM: 3f1de9eea2538bcc5229c0b765ac44d6dd223197
+PODFILE CHECKSUM: 0dc1bb5655e010189d1417e2d5e871d29f7be691
 
 COCOAPODS: 1.4.0

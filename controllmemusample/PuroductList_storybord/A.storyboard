@@ -100,6 +100,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mainCollectionView" destination="hOf-9D-ere" id="3z9-o2-k0Z"/>
+                        <outlet property="postButton" destination="YVG-6h-Pzq" id="4uA-gF-Dzu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1B-AO-fPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +323,7 @@
         <image name="Post.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Zi-DQ-agj"/>
-        <segue reference="uKd-m9-RaW"/>
+        <segue reference="17G-4f-IGP"/>
+        <segue reference="BWp-2r-yap"/>
     </inferredMetricsTieBreakers>
 </document>

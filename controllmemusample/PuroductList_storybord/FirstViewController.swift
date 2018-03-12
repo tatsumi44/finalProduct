@@ -11,11 +11,13 @@ import Firebase
 import FirebaseStorage
 import SDWebImage
 import NVActivityIndicatorView
+import Instructions
 
-class FirstViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
-    
+class FirstViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CoachMarksControllerDataSource,CoachMarksControllerDelegate  {
     
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    
+    @IBOutlet weak var postButton: UIBarButtonItem!
     
     
     var db1: Firestore!
@@ -28,8 +30,13 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     var photoCount: Int!
     let sectionID: Int = 1
     var posArray = [CGFloat]()
-    
-    
+    let coachMarksController = CoachMarksController()
+    let pointOfInterest = UIView()
+    let pointOfInterest1 = UIView()
+    let pointOfInterest2 = UIView()
+    let pointOfInterest3 = UIView()
+    let pointOfInterest4 = UIView()
+    var firstViewIntroduction: Bool!
     
     
     override func viewDidLoad() {
@@ -38,7 +45,9 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         mainCollectionView.delegate = self
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         posArray = appDelegate.posArray
+        self.coachMarksController.dataSource = self
         print(posArray)
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,10 +96,38 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
                 self.mainCollectionView.reloadData()
             }
         }
+        //        self.coachMarksController.overlay.color = UIColor.init(red: 243, green: 152, blue: 0, alpha: 0.01)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        db1 = Firestore.firestore()
+        if let uid = Auth.auth().currentUser?.uid{
+            db1.collection("users").document(uid).getDocument(completion: { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                  let data = snap?.data()
+                    self.firstViewIntroduction = data!["firstViewIntroduction"] as! Bool
+                    if self.firstViewIntroduction == false{
+                        self.coachMarksController.start(on: self)
+                    }
+                }
+            })
+        }
+        
+        //        self.coachMarksController.overlay.color = UIColor.blue
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let uid = Auth.auth().currentUser?.uid{
+            if self.firstViewIntroduction == false{
+                self.coachMarksController.stop(immediately: true)
+                self.firstViewIntroduction = true
+                db1.collection("users").document(uid).updateData(["firstViewIntroduction" : true])
+            }
+        }
+        
         
     }
     
@@ -104,14 +141,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        //セルの中にあるimageViewを指定tag = 1
-        //        cell.layer.masksToBounds = true //必須
-        //        cell.layer.cornerRadius = 10.0
-        //        cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0);
-        //        cell.layer.shadowOpacity = 0.9;
-        //        cell.layer.shadowRadius = 2.0;
-        //        cell.layer.borderColor = UIColor.black.cgColor
-        //        cell.layer.borderWidth = 0.5
+        
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         imageView.frame.size.width = mainCollectionView.frame.size.width/2-5.0
         imageView.layer.cornerRadius = 10.0
@@ -127,6 +157,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         getmainArray[indexPath.row].downloadURL { url, error in
             if let error = error {
                 // Handle any errors
+                print("\(error)")
             } else {
                 print(url!)
                 //imageViewに描画、SDWebImageライブラリを使用して描画
@@ -154,5 +185,49 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         appDelegate.cellOfNum = self.cellOfNum
         appDelegate.sectionID = self.sectionID
     }
+    
+    //Instructionsライブラリを使うために必須
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        let coachViews1 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        let coachViews2 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        let coachViews3 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        let coachViews4 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        coachViews.bodyView.hintLabel.text = "この画面では商品の取引や投稿を行うよ"
+        coachViews.bodyView.nextLabel.text = "OK"
+        coachViews1.bodyView.hintLabel.text = "この画面では取引相手とのチャットや自分の投稿を管理することができるよ"
+        coachViews1.bodyView.nextLabel.text = "OK"
+        coachViews2.bodyView.hintLabel.text = "この画面ではイベントの投稿をすることができるよ"
+        coachViews2.bodyView.nextLabel.text = "OK"
+        coachViews3.bodyView.hintLabel.text = "この画面では授業の評価を見たり、投稿することができるよ"
+        coachViews3.bodyView.nextLabel.text = "OK"
+        coachViews4.bodyView.hintLabel.text = "このボタンを押すと自分の持っているノート、過去問、レジュメを投稿することができるよ"
+        coachViews4.bodyView.nextLabel.text = "OK"
+        let coachViewArray = [coachViews,coachViews1,coachViews2,coachViews3,coachViews4]
+        
+        //        coachViews.bodyView.backgroundColor = UIColor.orange
+        return (bodyView: coachViewArray[index].bodyView, arrowView: coachViewArray[index].arrowView)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        pointOfInterest.frame = CGRect(x: 0, y: posArray[1], width: posArray[2]/5, height: posArray[3])
+        pointOfInterest1.frame = CGRect(x: posArray[2]/5, y: posArray[1], width: posArray[2]/5, height: posArray[3])
+        pointOfInterest2.frame = CGRect(x: posArray[2]/5 * 2, y: posArray[1], width: posArray[2]/5, height: posArray[3])
+        pointOfInterest3.frame = CGRect(x: posArray[2]/5 * 3, y: posArray[1], width: posArray[2]/5, height: posArray[3])
+        
+            pointOfInterest4.frame = CGRect(x: 300, y:0, width: 70, height: 60)
+        
+        
+        
+        let pointOfInterestArray = [pointOfInterest,pointOfInterest1,pointOfInterest2,pointOfInterest3,pointOfInterest4]
+        //        pointOfInterest.backgroundColor = UIColor.orange
+        return coachMarksController.helper.makeCoachMark(for: pointOfInterestArray[index])
+    }
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 5
+    }
+    
     
 }
