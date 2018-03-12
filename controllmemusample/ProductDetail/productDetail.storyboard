@@ -21,8 +21,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-0J-Fs5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="936"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vqh-Zw-f4e">
-                                        <rect key="frame" x="15" y="0.0" width="375" height="980"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqh-Zw-f4e">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJD-RO-0f4">
                                                 <rect key="frame" x="60" y="27" width="255" height="279"/>
@@ -142,8 +142,10 @@
                     <connections>
                         <outlet property="imageCountLabel" destination="VuW-zj-UeA" id="IRK-uI-XKt"/>
                         <outlet property="imageView" destination="DJD-RO-0f4" id="dvy-J4-9UQ"/>
+                        <outlet property="mainScrollView" destination="H1X-0J-Fs5" id="Sl2-Fp-uRw"/>
                         <outlet property="mainTableView" destination="iuE-Fs-1wo" id="c4S-Ag-mcZ"/>
                         <outlet property="productDetail" destination="rzL-eb-iUO" id="E2J-10-PP5"/>
+                        <outlet property="purchasedButton" destination="C2G-A1-GSK" id="dsZ-rk-Boz"/>
                         <outlet property="subTableView" destination="R0c-xc-ytK" id="L5s-PI-lnZ"/>
                     </connections>
                 </viewController>

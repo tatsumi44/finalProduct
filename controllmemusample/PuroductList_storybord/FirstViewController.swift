@@ -36,7 +36,9 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     let pointOfInterest2 = UIView()
     let pointOfInterest3 = UIView()
     let pointOfInterest4 = UIView()
+    let pointOfInterest5 = UIView()
     var firstViewIntroduction: Bool!
+    var cellOfPosArray = [[CGFloat]]()
     
     
     override func viewDidLoad() {
@@ -108,6 +110,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
                     print("\(error)")
                 }else{
                   let data = snap?.data()
+                    //ここでInstructionsスタート
                     self.firstViewIntroduction = data!["firstViewIntroduction"] as! Bool
                     if self.firstViewIntroduction == false{
                         self.coachMarksController.start(on: self)
@@ -122,8 +125,10 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         super.viewWillDisappear(animated)
         if let uid = Auth.auth().currentUser?.uid{
             if self.firstViewIntroduction == false{
+                //ここでInstructionsストップ
                 self.coachMarksController.stop(immediately: true)
                 self.firstViewIntroduction = true
+                //firstViewIntroductionをtrueに切り替え、以後表示されない
                 db1.collection("users").document(uid).updateData(["firstViewIntroduction" : true])
             }
         }
@@ -141,7 +146,8 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        
+        print("これは\([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])")
+        cellOfPosArray.append([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         imageView.frame.size.width = mainCollectionView.frame.size.width/2-5.0
         imageView.layer.cornerRadius = 10.0
@@ -193,7 +199,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         let coachViews2 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         let coachViews3 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         let coachViews4 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
+        let coachViews5 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         coachViews.bodyView.hintLabel.text = "この画面では商品の取引や投稿を行うよ"
         coachViews.bodyView.nextLabel.text = "OK"
         coachViews1.bodyView.hintLabel.text = "この画面では取引相手とのチャットや自分の投稿を管理することができるよ"
@@ -204,7 +210,9 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         coachViews3.bodyView.nextLabel.text = "OK"
         coachViews4.bodyView.hintLabel.text = "このボタンを押すと自分の持っているノート、過去問、レジュメを投稿することができるよ"
         coachViews4.bodyView.nextLabel.text = "OK"
-        let coachViewArray = [coachViews,coachViews1,coachViews2,coachViews3,coachViews4]
+        coachViews5.bodyView.hintLabel.text = "商品をタップすると商品の詳細を確認できて、出品者との取引を行うことができるよ"
+        coachViews5.bodyView.nextLabel.text = "OK"
+        let coachViewArray = [coachViews,coachViews1,coachViews2,coachViews3,coachViews4,coachViews5]
         
         //        coachViews.bodyView.backgroundColor = UIColor.orange
         return (bodyView: coachViewArray[index].bodyView, arrowView: coachViewArray[index].arrowView)
@@ -215,18 +223,18 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         pointOfInterest1.frame = CGRect(x: posArray[2]/5, y: posArray[1], width: posArray[2]/5, height: posArray[3])
         pointOfInterest2.frame = CGRect(x: posArray[2]/5 * 2, y: posArray[1], width: posArray[2]/5, height: posArray[3])
         pointOfInterest3.frame = CGRect(x: posArray[2]/5 * 3, y: posArray[1], width: posArray[2]/5, height: posArray[3])
+        pointOfInterest4.frame = CGRect(x: 300, y:0, width: 70, height: 60)
+        pointOfInterest5.frame = CGRect(x: cellOfPosArray[0][0], y: cellOfPosArray[0][1], width: cellOfPosArray[0][2], height: cellOfPosArray[0][3])
         
-            pointOfInterest4.frame = CGRect(x: 300, y:0, width: 70, height: 60)
         
         
-        
-        let pointOfInterestArray = [pointOfInterest,pointOfInterest1,pointOfInterest2,pointOfInterest3,pointOfInterest4]
+        let pointOfInterestArray = [pointOfInterest,pointOfInterest1,pointOfInterest2,pointOfInterest3,pointOfInterest4,pointOfInterest5]
         //        pointOfInterest.backgroundColor = UIColor.orange
         return coachMarksController.helper.makeCoachMark(for: pointOfInterestArray[index])
     }
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 5
+        return 6
     }
     
     

@@ -9,15 +9,16 @@
 import UIKit
 import Firebase
 import SDWebImage
-class ProductDetailViewController: UIViewController,UITableViewDataSource {
-    
-    
+import Instructions
+class ProductDetailViewController: UIViewController,UITableViewDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate ,UIScrollViewDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageCountLabel: UILabel!
     @IBOutlet weak var subTableView: UITableView!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var productDetail: UITextView!
+    @IBOutlet weak var purchasedButton: UIButton!
+    @IBOutlet weak var mainScrollView: UIScrollView!
     
     
     var productArray = [Product]()
@@ -36,8 +37,11 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource {
     let productNameListArray = ["商品名","価格","場所","出品者名","カテゴリー"]
     var productContentsArray = [String]()
     var sectionName: String!
-    
-    
+    let coachMarksController = CoachMarksController()
+    let pointOfInterest = UIView()
+    let pointOfInterest1 = UIView()
+    var scrollHeight: CGFloat!
+    var introBool:Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +53,31 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource {
         subTableView.layer.borderWidth = 0.5
         imageView.layer.cornerRadius = 10.0
         imageView.layer.masksToBounds = true
+        self.coachMarksController.dataSource = self
+        print([mainTableView.frame.origin.x,mainTableView.frame.origin.y,mainTableView.frame.width,mainTableView.frame.height])
+        mainScrollView.delegate = self
+        print("スクロールviewは\(mainScrollView.frame.height)")
+        print("画面は\(UIScreen.main.bounds.size.height)")
+        print("差分は\(mainScrollView.frame.height -  UIScreen.main.bounds.size.height)")
+        scrollHeight = mainScrollView.frame.height -  UIScreen.main.bounds.size.height
+        
+        if let uid = Auth.auth().currentUser?.uid{
+            print("ストップ1")
+            db = Firestore.firestore()
+            db.collection("users").document(uid).getDocument(completion: { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                    print("ストップ2")
+                    let data = snap?.data()
+                    if let produntDetailIntroduction = data!["produntDetailIntroduction"] as? Bool, produntDetailIntroduction == false{
+                        self.introBool = false
+                    }
+                }
+            })
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -78,7 +107,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource {
         }
         db.collection("users").document(exhibitationID).getDocument { (snap, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 let data = snap?.data()
                 let name = data!["name"] as? String
@@ -112,6 +141,14 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource {
             self.getmainArray.append(ref)
         }
         imagePrint()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.coachMarksController.stop(immediately: true)
+        if let uid = Auth.auth().currentUser?.uid{
+            db.collection("users").document(uid).updateData(["produntDetailIntroduction" : true])
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -192,14 +229,50 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource {
     func imagePrint() {
         getmainArray[imageNum].downloadURL { (url, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 self.imageView.sd_setImage(with: url!, completed: nil)
             }
         }
     }
+    //スクロール終了時
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
+        if introBool == false{
+            print("ストップ3")
+            print(scrollView.contentOffset.y)
+            print(self.scrollHeight)
+            if scrollView.contentOffset.y > self.scrollHeight{
+                self.coachMarksController.start(on: self)
+                print(CGRect(x: self.mainTableView.frame.origin.x, y: self.mainTableView.frame.origin.y - self.scrollHeight, width: self.mainTableView.frame.width, height: self.mainTableView.frame.height))
+                print(CGRect(x: self.purchasedButton.frame.origin.x, y: self.purchasedButton.frame.origin.y - self.scrollHeight, width: self.purchasedButton.frame.width, height: self.purchasedButton.frame.height))
+                print("スクロールストップ")
+            }
+        }
+    }
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        let coachViews1 = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        coachViews.bodyView.hintLabel.text = "ここには受け取り場所、支払い方法、商品の受け渡し方が書いてあるからよく確認しよう"
+        coachViews.bodyView.nextLabel.text = "Ok!"
+        coachViews1.bodyView.hintLabel.text = "ここのボタンを押すと出品者とチャットを始めることができます。詳細はチャットで決定しましょう"
+        coachViews1.bodyView.nextLabel.text = "Ok!"
+        let coachArray = [coachViews,coachViews1]
+        return (bodyView: coachArray[index].bodyView, arrowView: coachArray[index].arrowView)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        pointOfInterest.frame = CGRect(x: mainTableView.frame.origin.x, y: mainTableView.frame.origin.y - scrollHeight, width: mainTableView.frame.width, height: mainTableView.frame.height)
+        pointOfInterest1.frame = CGRect(x: purchasedButton.frame.origin.x, y: purchasedButton.frame.origin.y - scrollHeight, width: purchasedButton.frame.width, height: purchasedButton.frame.height)
+        let posArray = [pointOfInterest,pointOfInterest1]
+        return coachMarksController.helper.makeCoachMark(for:posArray[index])
+    }
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 2
+    }
     
     @IBAction func backViewContorollerButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 }

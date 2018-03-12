@@ -30,11 +30,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBAction func loginButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
                 //後でアラートとか書こうと思ったり
             }else{
                 if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController  {
-                    
                     //左から２番目のタブアイコンを選択状態にする(0が一番左)
                     tabvc.selectedIndex = 0
                     

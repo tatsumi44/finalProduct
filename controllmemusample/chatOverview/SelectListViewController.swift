@@ -52,11 +52,13 @@ class SelectListViewController: UIViewController,UITableViewDataSource,UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         switch indexPath.section {
         case 0:
+            
             cell.textLabel?.text = chatArray[indexPath.row]
         case 1:
             cell.textLabel?.text = postProductArray[indexPath.row]
         case 2:
             cell.textLabel?.text = postEventArray[indexPath.row]
+            
         default:
             break
         }

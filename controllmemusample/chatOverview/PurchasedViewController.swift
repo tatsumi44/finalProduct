@@ -66,6 +66,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        print([cell?.frame.origin.x,cell?.frame.origin.y,cell?.frame.width,cell?.frame.height])
         let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
         let nameLabel = cell?.contentView.viewWithTag(2) as! UILabel
         let imagePath: String = cellDetailArray[indexPath.row].imagePath!

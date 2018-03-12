@@ -46,12 +46,16 @@ class RegisterViewController: UIViewController {
         name = nameTextField.text
         grade = gradeTextField.text
         course = courseTextField.text
+        let firstViewIntroduction: Bool = false
         db.collection("users").document(uid).setData([
             "name": name,
             "grade": grade,
             "course": course,
             "email":email,
-            "id": uid]){ err in
+            "id": uid,
+            //初回チュートリアルFirstViewContoroller切り替え用
+            "firstViewIntroduction": firstViewIntroduction,
+            ]){ err in
                 if let err = err {
                     print("Error writing document: \(err)")
                 } else {
