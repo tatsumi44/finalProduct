@@ -86,6 +86,33 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEa-ZY-Zyp" id="9d7-td-zdU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOo-hD-gKl">
+                                                    <rect key="frame" x="0.0" y="5" width="100" height="33.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="LOB-uu-utk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxh-Fu-iYv">
+                                                    <rect key="frame" x="110" y="5" width="255" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="mOo-hD-gKl" secondAttribute="bottom" constant="5" id="9Lq-e6-seY"/>
+                                                <constraint firstItem="Pxh-Fu-iYv" firstAttribute="leading" secondItem="mOo-hD-gKl" secondAttribute="trailing" constant="10" id="CNZ-lZ-OaU"/>
+                                                <constraint firstItem="mOo-hD-gKl" firstAttribute="top" secondItem="9d7-td-zdU" secondAttribute="top" constant="5" id="MiD-vj-33A"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pxh-Fu-iYv" secondAttribute="bottom" constant="5" id="NqF-fz-417"/>
+                                                <constraint firstItem="Pxh-Fu-iYv" firstAttribute="top" secondItem="9d7-td-zdU" secondAttribute="top" constant="5" id="lwa-xs-uKK"/>
+                                                <constraint firstItem="mOo-hD-gKl" firstAttribute="leading" secondItem="9d7-td-zdU" secondAttribute="leading" id="u2J-4P-Ky5"/>
+                                                <constraint firstItem="Pxh-Fu-iYv" firstAttribute="leading" secondItem="mOo-hD-gKl" secondAttribute="trailing" constant="10" id="wQc-YT-NoG"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pxh-Fu-iYv" secondAttribute="trailing" constant="10" id="zFG-nb-Gpa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -139,6 +166,33 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nG0-F3-c5k" id="DNK-Bg-Nnq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-Cp-dGi">
+                                                    <rect key="frame" x="0.0" y="5" width="100" height="33.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="DMp-PR-DSI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPR-XS-iQi">
+                                                    <rect key="frame" x="110" y="5" width="255" height="33.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="nPR-XS-iQi" secondAttribute="trailing" constant="10" id="4h2-AW-pLa"/>
+                                                <constraint firstItem="2Zl-Cp-dGi" firstAttribute="leading" secondItem="DNK-Bg-Nnq" secondAttribute="leading" id="Bp2-Oc-rVK"/>
+                                                <constraint firstItem="nPR-XS-iQi" firstAttribute="top" secondItem="DNK-Bg-Nnq" secondAttribute="top" constant="5" id="JRZ-HR-te7"/>
+                                                <constraint firstItem="nPR-XS-iQi" firstAttribute="leading" secondItem="2Zl-Cp-dGi" secondAttribute="trailing" constant="10" id="UQq-zz-crF"/>
+                                                <constraint firstAttribute="bottom" secondItem="nPR-XS-iQi" secondAttribute="bottom" constant="5" id="kP7-EN-UA9"/>
+                                                <constraint firstItem="nPR-XS-iQi" firstAttribute="leading" secondItem="2Zl-Cp-dGi" secondAttribute="trailing" constant="10" id="kwD-Zu-LiM"/>
+                                                <constraint firstItem="2Zl-Cp-dGi" firstAttribute="top" secondItem="DNK-Bg-Nnq" secondAttribute="top" constant="5" id="tSN-mL-E5z"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Zl-Cp-dGi" secondAttribute="bottom" constant="5" id="zfd-dX-yIq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>

@@ -52,7 +52,7 @@ class PurchasedDetailChatViewController: UIViewController,UITableViewDataSource,
         db = Firestore.firestore()
         db.collection("users").document(uid).getDocument { (snap, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 let data = snap?.data()
                 self.myName = data!["name"] as! String
@@ -78,7 +78,10 @@ class PurchasedDetailChatViewController: UIViewController,UITableViewDataSource,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1")
         print(getMainArray[indexPath.row][0])
-        cell?.textLabel?.text = "\(getMainArray[indexPath.row][0])さん: \(getMainArray[indexPath.row][1])"
+        let nameLabel = cell?.contentView.viewWithTag(1) as! UILabel
+        let contentsLabel = cell?.contentView.viewWithTag(2) as! UILabel
+        nameLabel.text = "\(getMainArray[indexPath.row][0])"
+        contentsLabel.text = "  \(getMainArray[indexPath.row][1])"
         return cell!
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

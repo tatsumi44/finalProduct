@@ -71,7 +71,10 @@ class ChatDetailViewController: UIViewController,UITableViewDataSource,UITextFie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = "  \(getMainArray[indexPath.row][0]):\(getMainArray[indexPath.row][1])"
+        let nameLabel = cell?.contentView.viewWithTag(1) as! UILabel
+        let contentsLabel = cell?.contentView.viewWithTag(2) as! UILabel
+        nameLabel.text = "\(getMainArray[indexPath.row][0])"
+        contentsLabel.text = "  \(getMainArray[indexPath.row][1])"
         return cell!
     }
     

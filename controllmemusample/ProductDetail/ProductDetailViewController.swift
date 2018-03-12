@@ -76,10 +76,6 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
                 }
             })
         }
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -155,7 +151,6 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1{

@@ -30,7 +30,26 @@ class ChatViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         super.viewDidLoad()
         mainTableView.dataSource = self
         commentTextField.delegate = self
-        
+        realTimeDB = Database.database().reference()
+        db = Firestore.firestore()
+        let ref = db.collection("matchProduct")
+        myuid = Auth.auth().currentUser?.uid
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        exhibitorID = appDelegate.opposerid
+        productid = appDelegate.productid
+
+        ref.whereField("exhibitorID", isEqualTo: exhibitorID).whereField("buyerID", isEqualTo: myuid).whereField("productID", isEqualTo: productid).getDocuments { (snap, error) in
+            if let error = error{
+                print("\(error)")
+            }else{
+                for document in (snap?.documents)!{
+                    print("型は\(String(describing: type(of: document.documentID)))")
+                    print("これは\(document.documentID)")
+                    self.roomID = document.documentID
+                }
+            self.realTimeDB.ref.child("realtimechat").child("message").child(self.roomID).childByAutoId().setValue(["name": "運営チーム","comment": "商品出品者とマッチしました。このルームでは支払い方法、受け取り場所、どのように受け取りをするかを決定しましょう"])
+            }
+        }
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +64,7 @@ class ChatViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         db = Firestore.firestore()
         db.collection("users").document(myuid).getDocument { (snap, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 let data = snap?.data()
                 self.myName = data!["name"] as! String
@@ -54,7 +73,7 @@ class ChatViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         let ref = db.collection("matchProduct")
         ref.whereField("exhibitorID", isEqualTo: exhibitorID).whereField("buyerID", isEqualTo: myuid).whereField("productID", isEqualTo: productid).getDocuments { (snap, error) in
             if let error = error{
-                print("error")
+                print("\(error)")
             }else{
                 for document in (snap?.documents)!{
                     print("型は\(String(describing: type(of: document.documentID)))")
@@ -92,7 +111,10 @@ class ChatViewController: UIViewController,UITableViewDataSource,UITextFieldDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "  \(getMainArray[indexPath.row][0]):\(getMainArray[indexPath.row][1])"
+        let nameLabel = cell.contentView.viewWithTag(1) as! UILabel
+        let contentsLabel = cell.contentView.viewWithTag(2) as! UILabel
+        nameLabel.text = "\(getMainArray[indexPath.row][0])"
+        contentsLabel.text = "  \(getMainArray[indexPath.row][1])"
         return cell
     }
     
