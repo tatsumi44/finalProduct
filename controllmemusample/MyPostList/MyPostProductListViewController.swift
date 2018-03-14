@@ -151,8 +151,51 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
         }
         return cell
     }
-    func getData(sectionNum: Int,Array:[Product]) {
-      
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            switch indexPath.section {
+            case 0:
+                let productID: String = textBookArray[indexPath.row].productID
+                
+                textBookArray.remove(at: indexPath.row)
+                db.collection("1").document("\(productID)").delete(completion: { (error) in
+                    if let error = error{
+                        print("\(error)")
+                    }else{
+                        print("Document successfully removed!")
+                    }
+                    tableView.deleteRows(at: [indexPath], with:  .fade)
+                })
+            case 1:
+                let productID: String = noteBookArray[indexPath.row].productID
+                
+                noteBookArray.remove(at: indexPath.row)
+                db.collection("2").document("\(productID)").delete(completion: { (error) in
+                    if let error = error{
+                        print("\(error)")
+                    }else{
+                        print("Document successfully removed!")
+                    }
+                    tableView.deleteRows(at: [indexPath], with:  .fade)
+                })
+            case 2:
+                let productID: String = pastExaminatioArray[indexPath.row].productID
+                
+                pastExaminatioArray.remove(at: indexPath.row)
+                db.collection("3").document("\(productID)").delete(completion: { (error) in
+                    if let error = error{
+                        print("\(error)")
+                    }else{
+                        print("Document successfully removed!")
+                    }
+                    tableView.deleteRows(at: [indexPath], with:  .fade)
+                    print("削除した")
+                })
+            default:
+                break
+            }
+        }
     }
     
 }
