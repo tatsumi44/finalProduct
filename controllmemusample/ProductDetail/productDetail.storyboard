@@ -45,11 +45,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2G-A1-GSK">
-                                                <rect key="frame" x="102" y="804" width="171" height="72"/>
+                                                <rect key="frame" x="29" y="804" width="317" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                <state key="normal" title="購入する"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="出品者とチャットを開始する"/>
                                                 <connections>
                                                     <action selector="decideButton:" destination="nME-5n-Iuq" eventType="touchUpInside" id="wog-ZP-V0L"/>
                                                 </connections>

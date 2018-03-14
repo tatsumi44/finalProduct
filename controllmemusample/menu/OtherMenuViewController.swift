@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate {
     
     
     //異なるStorybordに画面遷移するのでこれを用いる、nameでStorybordの名前を指定
@@ -16,15 +16,21 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
     var uid: String!
     var profielArray = [String]()
     var db: Firestore!
+    let titleArray = ["アプリチュートリアル","その他"]
+    let logoutArray = ["ログアウト","プロフィールの変更"]
+    let tutorialArray = ["実際のサービスの流れ","商品の受け取り場所","商品の受け渡し方法","チャットで決定するべき事項","支払い方法"]
     
     
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var menuTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTableView.dataSource = self
+        menuTableView.dataSource = self
+        menuTableView.delegate = self
+        menuTableView.rowHeight = 60
         
         // Do any additional setup after loading the view.
     }
@@ -57,7 +63,7 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
             
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
-                    print("error")
+                    print("\(error)")
                 }else{
                     let data = snap?.data()
                     
@@ -65,6 +71,7 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
                         ref.child("image").child("profile").child(profilePath as! String).downloadURL { url, error in
                             if let error = error {
                                 // Handle any errors
+                                print("\(error)")
                             } else {
                                 //imageViewに描画、SDWebImageライブラリを使用して描画
                                 self.imageView.sd_setImage(with: url!, completed: nil)
@@ -77,16 +84,70 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
             }
         }
     }
-    
+    //一つのセクションにおける個数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profielArray.count
+        if tableView.tag == 1{
+            return profielArray.count
+        }
+        switch section {
+        case 0:
+            return tutorialArray.count
+        case 1:
+            return logoutArray.count
+        default:
+            return 0
+        }
+    }
+    //セルの内容
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        if tableView.tag == 1{
+            cell.textLabel?.text = profielArray[indexPath.row]
+        }
+        
+        if tableView.tag == 2{
+            switch indexPath.section{
+            case 0:
+                cell.textLabel?.text = tutorialArray[indexPath.row]
+            case 1:
+                cell.textLabel?.text = logoutArray[indexPath.row]
+            default :
+                break
+            }
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        }
+        
+        return cell
+    }
+    //セクション数
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView.tag == 2{
+            return titleArray.count
+        }
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = profielArray[indexPath.row]
-        cell?.textLabel?.adjustsFontSizeToFitWidth = true
-        return cell!
+    //tableViewのタイトル
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView.tag == 1{
+            return nil
+        }
+        return titleArray[section]
+    }
+    //タイトルの色を決定
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.textLabel?.textColor = UIColor.orange
+        }
+    }
+    //セルのクリックイベント
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section\(indexPath.section):row\(indexPath.row)")
+        
+        if indexPath.section == 1 && indexPath.row == 0{
+            logout()
+        }
     }
     
     
@@ -95,7 +156,8 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logoutButton(_ sender: Any) {
+    
+    func logout() {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -123,7 +185,7 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerEditedImage] as? UIImage
-    
+        
         let date = NSDate()
         //時間を文字列に整形
         let format = DateFormatter()
@@ -133,7 +195,8 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         
         db.collection("users").document(uid).updateData(["profilePath" : "\(datePath)_\(uid!).jpg"]) { (error) in
             if let error = error{
-                print("error")
+                
+                print("\(error)")
                 
             }else{
                 let data: Data = UIImageJPEGRepresentation(image!, 0.1)!
@@ -145,7 +208,6 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
                         // Uh-oh, an error occurred!
                         return
                     }
-                    // Metadata contains file metadata such as size, content-type, and download URL.
                     let downloadURL = metadata.downloadURL
                     print(downloadURL)
                 }
@@ -153,6 +215,4 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         }
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }

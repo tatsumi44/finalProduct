@@ -60,7 +60,7 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
         print("画面は\(UIScreen.main.bounds.size.height)")
         print("差分は\(mainScrollView.frame.height -  UIScreen.main.bounds.size.height)")
         scrollHeight = mainScrollView.frame.height -  UIScreen.main.bounds.size.height
-        
+        //このチュートリアルを見たことがあるかの確認
         if let uid = Auth.auth().currentUser?.uid{
             print("ストップ1")
             db = Firestore.firestore()
@@ -77,7 +77,6 @@ class ProductDetailViewController: UIViewController,UITableViewDataSource, Coach
             })
         }
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
