@@ -16,8 +16,8 @@ import Instructions
 class FirstViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CoachMarksControllerDataSource,CoachMarksControllerDelegate  {
     
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
     @IBOutlet weak var postButton: UIBarButtonItem!
+    
     
     
     var db1: Firestore!
@@ -39,6 +39,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     let pointOfInterest5 = UIView()
     var firstViewIntroduction: Bool!
     var cellOfPosArray = [[CGFloat]]()
+
     
     
     override func viewDidLoad() {
@@ -180,7 +181,6 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         
         let cellSize1:CGFloat = mainCollectionView.frame.size.width/2-5.0
         let cellSize2: CGFloat = mainCollectionView.frame.size.height/2
-        // 正方形で返すためにwidth,heightを同じにする
         return CGSize(width: cellSize1, height: cellSize2)
     }
     
@@ -236,6 +236,9 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 6
     }
+
+    
+    
     
     
 }

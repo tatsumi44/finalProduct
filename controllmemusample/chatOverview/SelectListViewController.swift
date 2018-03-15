@@ -84,6 +84,9 @@ class SelectListViewController: UIViewController,UITableViewDataSource,UITableVi
         if indexPath.section == 1 && indexPath.row == 0{
             performSegue(withIdentifier: "myProductPost", sender: nil)
         }
+        if indexPath.section == 2 && indexPath.row == 0 {
+            performSegue(withIdentifier: "MyPostEvent", sender: nil)
+        }
         
         print("section\(indexPath.section),row\(indexPath.row)")
     }

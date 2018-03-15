@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,60 +24,50 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="223" id="AiV-Fa-gLX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="223"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="124" id="AiV-Fa-gLX">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AiV-Fa-gLX" id="SY3-ON-4m5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aix-5s-zFl">
-                                                    <rect key="frame" x="15" y="46" width="355" height="139"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="detail" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aix-5s-zFl">
+                                                    <rect key="frame" x="15" y="62.5" width="350" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeP-SB-N3D">
+                                                    <rect key="frame" x="109" y="16" width="33" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="756" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7N-aG-L7Q">
+                                                    <rect key="frame" x="15" y="93" width="355" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh4-n9-eSU">
-                                                    <rect key="frame" x="10" y="10" width="150" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="1xq-YF-oxG"/>
-                                                        <constraint firstAttribute="width" constant="150" id="Jhc-CH-6BM"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="20" y="16" width="64" height="36.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeP-SB-N3D">
-                                                    <rect key="frame" x="195" y="9" width="170" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="170" id="gMg-D0-0cD"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7N-aG-L7Q">
-                                                    <rect key="frame" x="10" y="192.5" width="165" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="tdi-C5-Vl6"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GeP-SB-N3D" firstAttribute="top" secondItem="SY3-ON-4m5" secondAttribute="top" constant="9" id="11D-yk-egE"/>
-                                                <constraint firstItem="Aix-5s-zFl" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leading" constant="15" id="2Bi-Fy-oWW"/>
-                                                <constraint firstItem="M7N-aG-L7Q" firstAttribute="top" secondItem="Aix-5s-zFl" secondAttribute="bottom" constant="7.5" id="B9z-9V-A53"/>
-                                                <constraint firstItem="sh4-n9-eSU" firstAttribute="top" secondItem="SY3-ON-4m5" secondAttribute="top" constant="10" id="JSH-Ru-blS"/>
-                                                <constraint firstItem="M7N-aG-L7Q" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leading" constant="10" id="dCd-c8-n15"/>
-                                                <constraint firstAttribute="bottom" secondItem="M7N-aG-L7Q" secondAttribute="bottom" constant="10" id="e5E-Wc-CkF"/>
-                                                <constraint firstAttribute="trailing" secondItem="GeP-SB-N3D" secondAttribute="trailing" constant="10" id="kL5-9U-W42"/>
-                                                <constraint firstAttribute="trailing" secondItem="M7N-aG-L7Q" secondAttribute="trailing" constant="200" id="kmX-i5-frN"/>
-                                                <constraint firstAttribute="trailing" secondItem="Aix-5s-zFl" secondAttribute="trailing" constant="5" id="mst-lw-Cxi"/>
-                                                <constraint firstItem="Aix-5s-zFl" firstAttribute="top" secondItem="sh4-n9-eSU" secondAttribute="bottom" constant="11" id="oqo-No-WLq"/>
-                                                <constraint firstItem="sh4-n9-eSU" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leading" constant="10" id="r5q-eU-CSz"/>
+                                                <constraint firstItem="Aix-5s-zFl" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leading" constant="15" id="0o2-7e-bG7"/>
+                                                <constraint firstItem="Aix-5s-zFl" firstAttribute="top" secondItem="sh4-n9-eSU" secondAttribute="bottom" constant="10" id="GDP-kP-VMC"/>
+                                                <constraint firstItem="M7N-aG-L7Q" firstAttribute="top" secondItem="Aix-5s-zFl" secondAttribute="bottom" constant="10" id="Izt-qr-kMT"/>
+                                                <constraint firstItem="sh4-n9-eSU" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leadingMargin" constant="5" id="JNg-Of-NMD"/>
+                                                <constraint firstItem="M7N-aG-L7Q" firstAttribute="leading" secondItem="SY3-ON-4m5" secondAttribute="leading" constant="15" id="MEQ-0c-t1a"/>
+                                                <constraint firstAttribute="trailing" secondItem="M7N-aG-L7Q" secondAttribute="trailing" constant="5" id="Nj8-p2-PlI"/>
+                                                <constraint firstItem="GeP-SB-N3D" firstAttribute="leading" secondItem="sh4-n9-eSU" secondAttribute="trailing" constant="25" id="T8s-SN-aBq"/>
+                                                <constraint firstItem="GeP-SB-N3D" firstAttribute="top" secondItem="SY3-ON-4m5" secondAttribute="topMargin" constant="5" id="XI0-RJ-7eA"/>
+                                                <constraint firstItem="sh4-n9-eSU" firstAttribute="top" secondItem="SY3-ON-4m5" secondAttribute="topMargin" constant="5" id="cZf-QN-Cqi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aix-5s-zFl" secondAttribute="trailing" constant="10" id="hpA-Pq-e5z"/>
+                                                <constraint firstAttribute="bottom" secondItem="M7N-aG-L7Q" secondAttribute="bottom" constant="10" id="mxJ-IA-iRC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -9,11 +9,9 @@
 import UIKit
 
 class Product {
+    
     var productName: String!
     var price: String!
-//    var image1: String!
-//    var image2: String!
-//    var image3: String!
     var imageArray = [String]()
     var detail: String!
     var productID: String!

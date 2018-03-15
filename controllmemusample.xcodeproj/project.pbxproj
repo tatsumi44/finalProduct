@@ -63,6 +63,9 @@
 		B9D7D91220402A480028EF07 /* EmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D91120402A480028EF07 /* EmailRegisterViewController.swift */; };
 		B9E32B0120532554009ED8E9 /* MyPostProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9E32B0020532554009ED8E9 /* MyPostProduct.storyboard */; };
 		B9FCD6C32058EFA30022EB9E /* MyPostProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCD6C22058EFA30022EB9E /* MyPostProductListViewController.swift */; };
+		B9FCD6CA2059964D0022EB9E /* hart.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FCD6C92059964D0022EB9E /* hart.png */; };
+		B9FCD6CC20599C2A0022EB9E /* MyPostEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCD6CB20599C2A0022EB9E /* MyPostEventListViewController.swift */; };
+		B9FCD6CE20599C5A0022EB9E /* MyPostEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9FCD6CD20599C5A0022EB9E /* MyPostEvent.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +128,9 @@
 		B9D7D91120402A480028EF07 /* EmailRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterViewController.swift; sourceTree = "<group>"; };
 		B9E32B0020532554009ED8E9 /* MyPostProduct.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPostProduct.storyboard; sourceTree = "<group>"; };
 		B9FCD6C22058EFA30022EB9E /* MyPostProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostProductListViewController.swift; sourceTree = "<group>"; };
+		B9FCD6C92059964D0022EB9E /* hart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hart.png; sourceTree = "<group>"; };
+		B9FCD6CB20599C2A0022EB9E /* MyPostEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostEventListViewController.swift; sourceTree = "<group>"; };
+		B9FCD6CD20599C5A0022EB9E /* MyPostEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPostEvent.storyboard; sourceTree = "<group>"; };
 		E9FE34DCFA13CA0EF4AFE2DE /* Pods-controllmemusample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-controllmemusample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-controllmemusample/Pods-controllmemusample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +239,7 @@
 		B97F9CEE204E967700EADB20 /* resourse */ = {
 			isa = PBXGroup;
 			children = (
+				B9FCD6C92059964D0022EB9E /* hart.png */,
 				B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */,
 				B97F9CEC204E966E00EADB20 /* event.png */,
 				B97F9D1E2050C5DE00EADB20 /* curriculum.png */,
@@ -250,6 +257,8 @@
 				B97F9CF3204E984800EADB20 /* EventViewController.swift */,
 				B97F9CF5204E9FF200EADB20 /* EventPostViewController.swift */,
 				B97F9CFA204ECB7600EADB20 /* Event.swift */,
+				B9FCD6CB20599C2A0022EB9E /* MyPostEventListViewController.swift */,
+				B9FCD6CD20599C5A0022EB9E /* MyPostEvent.storyboard */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -390,6 +399,7 @@
 			files = (
 				B97F9D1F2050C5DE00EADB20 /* curriculum.png in Resources */,
 				B935019920440B86000F554B /* Chat.storyboard in Resources */,
+				B9FCD6CA2059964D0022EB9E /* hart.png in Resources */,
 				B9D7D90820401C470028EF07 /* Login.storyboard in Resources */,
 				B9D7D8F0203F2FE60028EF07 /* A.storyboard in Resources */,
 				B935015D20412609000F554B /* ProductContribution.storyboard in Resources */,
@@ -399,6 +409,7 @@
 				B97F9CED204E966F00EADB20 /* event.png in Resources */,
 				B93501962043E5FC000F554B /* next22.png in Resources */,
 				B9D7D90A204026590028EF07 /* Kanematsu_auditorium.jpg in Resources */,
+				B9FCD6CE20599C5A0022EB9E /* MyPostEvent.storyboard in Resources */,
 				B917CF402049230C0074B846 /* Post.png in Resources */,
 				B97F9CE5204A8A6F00EADB20 /* chat.png in Resources */,
 				B9D7D8F4203F300E0028EF07 /* C.storyboard in Resources */,
@@ -507,6 +518,7 @@
 				B93C8AF920511769007ABFA7 /* Evaluation.swift in Sources */,
 				B935019B20440CB0000F554B /* ChatViewController.swift in Sources */,
 				B93501922043D7BA000F554B /* ProductDetailViewController.swift in Sources */,
+				B9FCD6CC20599C2A0022EB9E /* MyPostEventListViewController.swift in Sources */,
 				B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */,
 				B9D7D8FC203F33970028EF07 /* PageViewController.swift in Sources */,
 				B9FCD6C32058EFA30022EB9E /* MyPostProductListViewController.swift in Sources */,
