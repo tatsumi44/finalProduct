@@ -23,15 +23,31 @@ class ChatDetailViewController: MessagesViewController{
     var messagesList: [ChatModel] = []
     var sender:Sender!
     var sender1:Sender!
-    let avator = Avatar(image: UIImage(named:"hashi.png"), initials: "橋")
     var contentsArray = [String:Any]()
     var uid1:String!
+    var myImagepath: String!
+    var otherImagePath: String!
+    var myPath: URL!
+    var otherPath: URL!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
+        messageInputBar.sendButton.tintColor = UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1)
+        scrollsToBottomOnKeybordBeginsEditing = true // default false
+        maintainPositionOnKeyboardFrameChanged = true // default false
+        
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         realTimeDB = Database.database().reference()
+        let storage = Storage.storage().reference()
         if let uid = Auth.auth().currentUser?.uid{
             uid1 = uid
             db = Firestore.firestore()
@@ -41,8 +57,37 @@ class ChatDetailViewController: MessagesViewController{
                 }else{
                     let data = snap?.data()
                     self.myName = data!["name"] as! String
+                    self.myImagepath = data!["profilePath"] as! String
+                    self.sender = Sender(id: uid, displayName: self.myName)
+                    self.db.collection("users").document(self.cellDetailArray[self.cellOfNum].exhibitorID).getDocument(completion: { (snap, error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }else{
+                            let data = snap?.data()
+                            self.otherImagePath = data!["profilePath"] as! String
+                            
+                            if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
+                                storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.myPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                                storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.otherPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                            }
+                        }
+                    })
                 }
-                self.sender = Sender(id: uid, displayName: self.myName)
+                
                 self.realTimeDB.ref.child("realtimechat").child("message").child(self.cellDetailArray[self.cellOfNum].roomID!).observe(.value) { (snap) in
                     self.messagesList = [ChatModel]()
                     for item in snap.children{
@@ -58,18 +103,6 @@ class ChatDetailViewController: MessagesViewController{
                 }
             }
         }
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
-        messageInputBar.delegate = self
-        messageInputBar.sendButton.tintColor = UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1)
-        scrollsToBottomOnKeybordBeginsEditing = true // default false
-        maintainPositionOnKeyboardFrameChanged = true // default false
-        
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,7 +154,11 @@ extension ChatDetailViewController: MessagesDisplayDelegate, MessagesLayoutDeleg
         return 200
     }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.set(avatar: avator)
+        if isFromCurrentSender(message: message){
+            avatarView.sd_setImage(with: myPath, completed: nil)
+        }else{
+            avatarView.sd_setImage(with: otherPath, completed: nil)
+        }
     }
     func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {
         if isFromCurrentSender(message: message) {

@@ -41,11 +41,12 @@ class PurchasedDetailChatViewController: MessagesViewController  {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        db = Firestore.firestore()
         tabBarController?.tabBar.isHidden = true
+        realTimeDB = Database.database().reference()
         let storage = Storage.storage().reference()
         if let uid = Auth.auth().currentUser?.uid{
             uid1 = uid
+            db = Firestore.firestore()
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
                     print("\(error)")
@@ -53,52 +54,49 @@ class PurchasedDetailChatViewController: MessagesViewController  {
                     let data = snap?.data()
                     self.myName = data!["name"] as! String
                     self.myImagepath = data!["profilePath"] as! String
-                    
-                }
-                self.sender = Sender(id: uid, displayName: self.myName)
-                self.db.collection("users").document(self.cellDetailArray[self.cellOfNum].buyerID).getDocument(completion: { (snap, error) in
-                    if let error = error{
-                        print(error.localizedDescription)
-                    }else{
-                        let data = snap?.data()
-                        self.otherImagePath = data!["profilePath"] as! String
-                        
-                        if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
-                            storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
-                                if let error = error{
-                                    print(error.localizedDescription)
-                                }else{
-                                    self.myPath = url
-                                    self.messagesCollectionView.reloadData()
-                                }
-                            })
-                            storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
-                                if let error = error{
-                                    print(error.localizedDescription)
-                                }else{
-                                    self.otherPath = url
-                                    self.messagesCollectionView.reloadData()
-                                }
-                            })
+                    self.sender = Sender(id: uid, displayName: self.myName)
+                    self.db.collection("users").document(self.cellDetailArray[self.cellOfNum].buyerID).getDocument(completion: { (snap, error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }else{
+                            let data = snap?.data()
+                            self.otherImagePath = data!["profilePath"] as! String
+                            
+                            if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
+                                storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.myPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                                storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.otherPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                            }
                         }
-                    }
-                })
-                
-            }
-            realTimeDB = Database.database().reference()
-            realTimeDB.ref.child("realtimechat").child("message").child(cellDetailArray[cellOfNum].roomID!).observe(.value) { (snap) in
-                self.messagesList = [ChatModel]()
-                for item in snap.children{
-                    let child = item as! DataSnapshot
-                    let dic = child.value as! NSDictionary
-                    let attributedText = NSAttributedString(string: dic["text"] as! String, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
-                    self.sender = Sender(id: dic["senderID"] as! String, displayName: dic["senderName"] as! String )
-                    let message = ChatModel(attributedText: attributedText, sender: self.sender, messageId: UUID().uuidString, date: Date())
-                    self.messagesList.append(message)
+                    })
                 }
-                self.messagesCollectionView.reloadData()
-                print("いいね1")
-                self.messagesCollectionView.scrollToBottom()
+                
+                self.realTimeDB.ref.child("realtimechat").child("message").child(self.cellDetailArray[self.cellOfNum].roomID!).observe(.value) { (snap) in
+                    self.messagesList = [ChatModel]()
+                    for item in snap.children{
+                        let child = item as! DataSnapshot
+                        let dic = child.value as! NSDictionary
+                        let attributedText = NSAttributedString(string: dic["text"] as! String, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
+                        self.sender1 = Sender(id: dic["senderID"] as! String, displayName: dic["senderName"] as! String )
+                        let message = ChatModel(attributedText: attributedText, sender: self.sender1, messageId: UUID().uuidString, date: Date())
+                        self.messagesList.append(message)
+                    }
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToBottom()
+                }
             }
         }
         
