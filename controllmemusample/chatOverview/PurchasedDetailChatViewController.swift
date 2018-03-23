@@ -21,6 +21,8 @@ class PurchasedDetailChatViewController: MessagesViewController  {
     var messagesList: [ChatModel] = []
     var sender:Sender!
     var sender1:Sender!
+    let official = Sender(id: "123456", displayName: "official")
+    let officialAvatar = Avatar(image: UIImage(named:"kanematsu.jpg"), initials: "official")
     var contentsArray = [String:Any]()
     var uid1:String!
     var myImagepath: String!
@@ -161,6 +163,9 @@ extension PurchasedDetailChatViewController: MessagesDisplayDelegate, MessagesLa
             avatarView.sd_setImage(with: myPath, completed: nil)
         }else{
             avatarView.sd_setImage(with: otherPath, completed: nil)
+        }
+        if message.sender == official{
+            avatarView.set(avatar: officialAvatar)
         }
     }
     func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {

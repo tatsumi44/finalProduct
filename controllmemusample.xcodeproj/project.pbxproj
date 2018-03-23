@@ -45,6 +45,7 @@
 		B99B48242064C81800D7335F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B48232064C81800D7335F /* ChatModel.swift */; };
 		B99B48262064DBF000D7335F /* hashi.png in Resources */ = {isa = PBXBuildFile; fileRef = B99B48252064DBF000D7335F /* hashi.png */; };
 		B99B48282064E8D700D7335F /* uma.png in Resources */ = {isa = PBXBuildFile; fileRef = B99B48272064E8D700D7335F /* uma.png */; };
+		B99B482A20651ECE00D7335F /* kanematsu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B99B482920651ECE00D7335F /* kanematsu.jpg */; };
 		B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */; };
 		B9D7D8E0203F2FA00028EF07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DF203F2FA00028EF07 /* ViewController.swift */; };
 		B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */; };
@@ -58,7 +59,6 @@
 		B9D7D902203F35AF0028EF07 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D901203F35AF0028EF07 /* ThirdViewController.swift */; };
 		B9D7D904203FEB850028EF07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */; };
 		B9D7D90820401C470028EF07 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D90720401C470028EF07 /* Login.storyboard */; };
-		B9D7D90A204026590028EF07 /* Kanematsu_auditorium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */; };
 		B9D7D90C2040274C0028EF07 /* FirstSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90B2040274C0028EF07 /* FirstSelectViewController.swift */; };
 		B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90D204027700028EF07 /* LoginViewController.swift */; };
 		B9D7D910204027850028EF07 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90F204027850028EF07 /* RegisterViewController.swift */; };
@@ -110,6 +110,7 @@
 		B99B48232064C81800D7335F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		B99B48252064DBF000D7335F /* hashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hashi.png; sourceTree = "<group>"; };
 		B99B48272064E8D700D7335F /* uma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uma.png; sourceTree = "<group>"; };
+		B99B482920651ECE00D7335F /* kanematsu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kanematsu.jpg; sourceTree = "<group>"; };
 		B9D7D8DA203F2FA00028EF07 /* controllmemusample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controllmemusample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D7D8DF203F2FA00028EF07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +126,6 @@
 		B9D7D901203F35AF0028EF07 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D7D90720401C470028EF07 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kanematsu_auditorium.jpg; sourceTree = "<group>"; };
 		B9D7D90B2040274C0028EF07 /* FirstSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSelectViewController.swift; sourceTree = "<group>"; };
 		B9D7D90D204027700028EF07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B9D7D90F204027850028EF07 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				B9FCD6C92059964D0022EB9E /* hart.png */,
-				B9D7D909204026590028EF07 /* Kanematsu_auditorium.jpg */,
+				B99B482920651ECE00D7335F /* kanematsu.jpg */,
 				B97F9CEC204E966E00EADB20 /* event.png */,
 				B99B48272064E8D700D7335F /* uma.png */,
 				B97F9D1E2050C5DE00EADB20 /* curriculum.png */,
@@ -413,8 +413,8 @@
 				B9D7D8E8203F2FA00028EF07 /* LaunchScreen.storyboard in Resources */,
 				B97F9D1B2050C3BF00EADB20 /* E.storyboard in Resources */,
 				B97F9CED204E966F00EADB20 /* event.png in Resources */,
+				B99B482A20651ECE00D7335F /* kanematsu.jpg in Resources */,
 				B93501962043E5FC000F554B /* next22.png in Resources */,
-				B9D7D90A204026590028EF07 /* Kanematsu_auditorium.jpg in Resources */,
 				B9FCD6CE20599C5A0022EB9E /* MyPostEvent.storyboard in Resources */,
 				B917CF402049230C0074B846 /* Post.png in Resources */,
 				B97F9CE5204A8A6F00EADB20 /* chat.png in Resources */,

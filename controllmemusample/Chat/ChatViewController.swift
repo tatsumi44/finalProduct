@@ -22,8 +22,14 @@ class ChatViewController: MessagesViewController{
     var messagesList: [ChatModel] = []
     var sender:Sender!
     var sender1:Sender!
+    let official = Sender(id: "123456", displayName: "official")
+    let officialAvatar = Avatar(image: UIImage(named:"kanematsu.jpg"), initials: "official")
     var contentsArray = [String:Any]()
     var uid1:String!
+    var myImagepath: String!
+    var otherImagePath: String!
+    var myPath: URL!
+    var otherPath: URL!
     
     
     override func viewDidLoad() {
@@ -38,19 +44,49 @@ class ChatViewController: MessagesViewController{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         exhibitorID = appDelegate.opposerid
         productid = appDelegate.productid
+
         
-        //            self.realTimeDB.ref.child("realtimechat").child("message").child(self.roomID).childByAutoId().setValue(["name": "運営チーム","comment": "商品出品者とマッチしました。このルームでは支払い方法、受け取り場所、どのように受け取りをするかを決定しましょう"])
         if let uid = Auth.auth().currentUser?.uid{
             self.uid1 = uid
             db = Firestore.firestore()
+            let storage = Storage.storage().reference()
             db.collection("users").document(uid).getDocument { (snap, error) in
                 if let error = error{
                     print("\(error)")
                 }else{
                     let data = snap?.data()
                     self.myName = data!["name"] as! String
-                    self.sender = Sender(id: uid, displayName: self.myName)
+                    self.myImagepath = data!["profilePath"] as! String
+                    
+                    self.db.collection("users").document(self.exhibitorID).getDocument(completion: { (snap, error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }else{
+                            let data = snap?.data()
+                            self.otherImagePath = data!["profilePath"] as! String
+                            if let myPath = self.myImagepath,let otherPath = self.otherImagePath{
+                                storage.child("image/profile/\(myPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.myPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                                storage.child("image/profile/\(otherPath)").downloadURL(completion: { (url, error) in
+                                    if let error = error{
+                                        print(error.localizedDescription)
+                                    }else{
+                                        self.otherPath = url
+                                        self.messagesCollectionView.reloadData()
+                                    }
+                                })
+                            }
+                        }
+                    })
+                    
                 }
+                self.sender = Sender(id: uid, displayName: self.myName)
             }
             db.collection("matchProduct").whereField("exhibitorID", isEqualTo: exhibitorID).whereField("buyerID", isEqualTo: uid).whereField("productID", isEqualTo: productid).getDocuments { (snap, error) in
                 if let error = error{
@@ -61,6 +97,9 @@ class ChatViewController: MessagesViewController{
                         print("型は\(String(describing: type(of: document.documentID)))")
                         print("これは\(document.documentID)")
                         self.roomID = document.documentID
+                        let text =  "商品出品者とマッチしました。このルームでは支払い方法、受け取り場所、どのように受け取りをするかを決定しましょう"
+                        self.contentsArray = ["text":text,"senderID": self.official.id,"senderName":self.official.displayName]
+                        self.realTimeDB.ref.child("realtimechat").child("message").child(self.roomID).childByAutoId().setValue(self.contentsArray)
                     }
                     
                     self.realTimeDB = Database.database().reference()
@@ -138,7 +177,15 @@ extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
         return 200
     }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.set(avatar: avator)
+        if isFromCurrentSender(message: message){
+            avatarView.sd_setImage(with: myPath, completed: nil)
+        }else{
+            avatarView.sd_setImage(with: otherPath, completed: nil)
+        }
+        if message.sender == official{
+            avatarView.set(avatar: officialAvatar)
+        }
+        
     }
     func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {
         if isFromCurrentSender(message: message) {
@@ -154,6 +201,7 @@ extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
         } else {
             return .messageLeading(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
         }
+        
     }
     
     func cellBottomLabelAlignment(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LabelAlignment {
