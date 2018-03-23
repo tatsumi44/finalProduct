@@ -13,6 +13,7 @@ target 'controllmemusample' do
   pod 'DKImagePickerController'
   pod 'NVActivityIndicatorView'
   pod 'Instructions', '~> 1.0.0'
+  pod 'MessageKit'
 
   # Pods for controllmemusample
 

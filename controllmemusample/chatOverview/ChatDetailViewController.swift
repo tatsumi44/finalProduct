@@ -8,11 +8,9 @@
 
 import UIKit
 import Firebase
-
-class ChatDetailViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate {
+import MessageKit
+class ChatDetailViewController: MessagesViewController{
     
-    @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var textField: UITextField!
     
     var cellOfNum: Int!
     var realTimeDB: DatabaseReference!
@@ -22,72 +20,170 @@ class ChatDetailViewController: UIViewController,UITableViewDataSource,UITextFie
     var commnetArray = [String:String]()
     var myName: String!
     var cellDetailArray = [ChatList]()
+    var messagesList: [ChatModel] = []
+    var sender:Sender!
+    var sender1:Sender!
+    let avator = Avatar(image: UIImage(named:"hashi.png"), initials: "橋")
+    var contentsArray = [String:Any]()
+    var uid1:String!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView.dataSource = self
-        textField.delegate = self
+        tabBarController?.tabBar.isHidden = true
+        realTimeDB = Database.database().reference()
+        if let uid = Auth.auth().currentUser?.uid{
+            uid1 = uid
+            db = Firestore.firestore()
+            db.collection("users").document(uid).getDocument { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                    let data = snap?.data()
+                    self.myName = data!["name"] as! String
+                }
+                self.sender = Sender(id: uid, displayName: self.myName)
+                self.realTimeDB.ref.child("realtimechat").child("message").child(self.cellDetailArray[self.cellOfNum].roomID!).observe(.value) { (snap) in
+                    self.messagesList = [ChatModel]()
+                    for item in snap.children{
+                        let child = item as! DataSnapshot
+                        let dic = child.value as! NSDictionary
+                        let attributedText = NSAttributedString(string: dic["text"] as! String, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
+                        self.sender1 = Sender(id: dic["senderID"] as! String, displayName: dic["senderName"] as! String )
+                        let message = ChatModel(attributedText: attributedText, sender: self.sender1, messageId: UUID().uuidString, date: Date())
+                        self.messagesList.append(message)
+                    }
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToBottom()
+                }
+            }
+        }
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
+        messageInputBar.sendButton.tintColor = UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1)
+        scrollsToBottomOnKeybordBeginsEditing = true // default false
+        maintainPositionOnKeyboardFrameChanged = true // default false
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        realTimeDB = Database.database().reference()
-        realTimeDB.ref.child("realtimechat").child("message").child(cellDetailArray[cellOfNum].roomID!).observe(.value) { (snap) in
-            self.getMainArray = [[String]]()
-            for item in snap.children {
-                //ここは非常にハマるfirebaseはjson形式なので変換が必要
-                let child = item as! DataSnapshot
-                let dic = child.value as! NSDictionary
-                self.getArray = [dic["name"]! as! String, dic["comment"]! as! String]
-                self.getMainArray.append(self.getArray)
-            }
-            print(self.getMainArray)
-            //リロード
-            self.mainTableView.reloadData()
-            
-        }
-        let uid:String = (Auth.auth().currentUser?.uid)!
-        db = Firestore.firestore()
-        db.collection("users").document(uid).getDocument { (snap, error) in
-            if let error = error{
-                print("\(error)")
-            }else{
-                let data = snap?.data()
-                self.myName = data!["name"] as! String
-            }
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getMainArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        let nameLabel = cell?.contentView.viewWithTag(1) as! UILabel
-        let contentsLabel = cell?.contentView.viewWithTag(2) as! UILabel
-        nameLabel.text = "\(getMainArray[indexPath.row][0])"
-        contentsLabel.text = "  \(getMainArray[indexPath.row][1])"
-        return cell!
-    }
-    
-    
-    @IBAction func tap(_ sender: Any) {
-        commnetArray = ["name": myName,"comment": textField.text!]
-        realTimeDB.ref.child("realtimechat").child("message").child(cellDetailArray[cellOfNum].roomID!).childByAutoId().setValue(commnetArray)
-        textField.text = ""
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
 }
+//表示内容系
+extension ChatDetailViewController: MessagesDataSource {
+    
+    func currentSender() -> Sender {
+        return sender
+    }
+    
+    func numberOfMessages(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messagesList.count
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messagesList[indexPath.section]
+    }
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let name = message.sender.displayName
+        return NSAttributedString(string: name, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption1)])
+    }
+    
+    func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        struct ConversationDateFormatter {
+            static let formatter: DateFormatter = {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                return formatter
+            }()
+        }
+        let formatter = ConversationDateFormatter.formatter
+        let dateString = formatter.string(from: message.sentDate)
+        return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
+    }
+}
+//レイアウト系
+extension ChatDetailViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
+    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 200
+    }
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.set(avatar: avator)
+    }
+    func messagePadding(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIEdgeInsets {
+        if isFromCurrentSender(message: message) {
+            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 4)
+        } else {
+            return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 30)
+        }
+    }
+    
+    func cellTopLabelAlignment(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LabelAlignment {
+        if isFromCurrentSender(message: message) {
+            return .messageTrailing(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
+        } else {
+            return .messageLeading(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+        }
+    }
+    
+    func cellBottomLabelAlignment(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LabelAlignment {
+        if isFromCurrentSender(message: message) {
+            return .messageLeading(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+        } else {
+            return .messageTrailing(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
+        }
+    }
+    
+    func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        
+        return CGSize(width: messagesCollectionView.bounds.width, height: 10)
+    }
+}
+//打ち込んだ文字をどうにかする系
+extension ChatDetailViewController: MessageInputBarDelegate {
+    
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        
+        // Each NSTextAttachment that contains an image will count as one empty character in the text: String
+        
+        for component in inputBar.inputTextView.components {
+            
+            if let image = component as? UIImage {
+                
+                let imageMessage = ChatModel(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+                messagesList.append(imageMessage)
+                messagesCollectionView.insertSections([messagesList.count - 1])
+                
+            } else if let text = component as? String {
+                print(text)
+                contentsArray = ["text":text,"senderID": uid1,"senderName":self.sender.displayName]
+                realTimeDB.ref.child("realtimechat").child("message").child(cellDetailArray[cellOfNum].roomID!).childByAutoId().setValue(contentsArray)
+                let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
+                
+                let message = ChatModel(attributedText: attributedText, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+                messagesList.append(message)
+                messagesCollectionView.insertSections([messagesList.count - 1])
+            }
+            
+        }
+        
+        inputBar.inputTextView.text = String()
+        messagesCollectionView.scrollToBottom()
+    }
+    
+}
+
+

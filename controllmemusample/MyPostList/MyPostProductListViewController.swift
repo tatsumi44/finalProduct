@@ -63,8 +63,6 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 }
             })
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -157,7 +155,6 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
             switch indexPath.section {
             case 0:
                 let productID: String = textBookArray[indexPath.row].productID
-                
                 textBookArray.remove(at: indexPath.row)
                 db.collection("1").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
@@ -169,7 +166,6 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 })
             case 1:
                 let productID: String = noteBookArray[indexPath.row].productID
-                
                 noteBookArray.remove(at: indexPath.row)
                 db.collection("2").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
@@ -181,16 +177,16 @@ class MyPostProductListViewController: UIViewController,UITableViewDataSource,UI
                 })
             case 2:
                 let productID: String = pastExaminatioArray[indexPath.row].productID
-                
                 pastExaminatioArray.remove(at: indexPath.row)
                 db.collection("3").document("\(productID)").delete(completion: { (error) in
                     if let error = error{
                         print("\(error)")
                     }else{
                         print("Document successfully removed!")
+                        tableView.deleteRows(at: [indexPath], with:  .fade)
+                        print("削除した")
                     }
-                    tableView.deleteRows(at: [indexPath], with:  .fade)
-                    print("削除した")
+
                 })
             default:
                 break

@@ -18,6 +18,7 @@ class Evaluation {
     var different: String!
     var coursedetail: String!
     var postuid: String!
+    
     init(className: String,course: String,year: String,courseTime: String,dayOfTheWeek: String,courseEvaluation: String,different: String,coursedetail: String,postuid: String) {
         
         self.className = className
