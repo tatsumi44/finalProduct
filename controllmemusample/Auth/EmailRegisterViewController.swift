@@ -28,7 +28,7 @@ class EmailRegisterViewController: UIViewController {
     @IBAction func registerButton(_ sender: Any) {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if let error = error{
-                print("error")
+                print(error.localizedDescription)
                 //後でアラートを出す処理とか書く予定
             }else{
                 self.performSegue(withIdentifier: "NextRegister", sender: nil)

@@ -9,11 +9,14 @@
 import UIKit
 import Firebase
 import DKImagePickerController
+import UserNotifications
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate{
+    
     var window: UIWindow?
+    
     var productArray = [Product]()
     var cellOfNum:Int!
     var opposerid: String!
@@ -26,8 +29,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var height: CGFloat!
     var posArray = [CGFloat]()
     
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // リモート通知 (iOS10に対応)
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        
+        // UNUserNotificationCenterDelegateの設定
+        UNUserNotificationCenter.current().delegate = self
+        // FCMのMessagingDelegateの設定
+        Messaging.messaging().delegate = self
+        
+        // リモートプッシュの設定
+        application.registerForRemoteNotifications()
+        // Firebase初期設定
         FirebaseApp.configure()
+        
+        // アプリ起動時にFCMのトークンを取得し、表示する
+        let token = Messaging.messaging().fcmToken
+        print("FCM token: \(token ?? "")")
+        
+        
         UINavigationBar.appearance().barTintColor = UIColor.white
         var viewControllers: [UIViewController] = []
         
@@ -73,51 +99,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabBarController.tabBar.unselectedItemTintColor = UIColor.orange
         tabBarController.tabBar.tintColor = UIColor.red
-//        tabBarController.tabBar.backgroundColor = UIColor.black
+        //        tabBarController.tabBar.backgroundColor = UIColor.black
         tabBarController.setViewControllers(viewControllers, animated: false)
         
         // rootViewControllerをUITabBarControllerにする
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-     return true
+        
+        
+        return true
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("フロントでプッシュ通知受け取ったよ")
+    }
+    
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
     func applicationWillResignActive(_ application: UIApplication) {
-
-      
-        
         
     }
     
-
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-      
-        
         
     }
     
-
     func applicationWillEnterForeground(_ application: UIApplication) {
- 
         
         
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-       
-        
-       
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-       
-        
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
         
     }
-
-
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        
+        
+    }
+    
+    
 }
+
+
+
+
 

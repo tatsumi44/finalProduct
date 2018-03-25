@@ -28,7 +28,7 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
         eventArray = [Event]()
         db.collection("event").getDocuments { (snap, error) in
             if let error = error{
-                print("error")
+                print(error.localizedDescription)
             }else{
                 for document in (snap?.documents)!{
                     let data = document.data()

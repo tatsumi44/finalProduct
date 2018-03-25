@@ -100,6 +100,7 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         //getmainArrayにあるpathをurl型に変換しimageViewに描画
         getmainArray[indexPath.row].downloadURL { url, error in
             if let error = error {
+                print(error.localizedDescription)
                 // Handle any errors
             } else {
                 print(url!)

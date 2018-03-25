@@ -161,26 +161,6 @@
             </objects>
             <point key="canvasLocation" x="4439.1999999999998" y="198.35082458770617"/>
         </scene>
-        <!--B-->
-        <scene sceneID="c3U-Y8-c3g">
-            <objects>
-                <viewControllerPlaceholder storyboardName="B" id="oOb-lZ-DYq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="k1Y-d5-qzQ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XB1-OB-g70" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="828" y="1070"/>
-        </scene>
-        <!--C-->
-        <scene sceneID="hcA-rh-I5h">
-            <objects>
-                <viewControllerPlaceholder storyboardName="C" id="IAy-pM-ZN7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="QTd-1B-SYA"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="014-WD-3QV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="883" y="1168"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qgl-gZ-fRf">
             <objects>

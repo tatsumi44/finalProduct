@@ -14,6 +14,7 @@ target 'controllmemusample' do
   pod 'NVActivityIndicatorView'
   pod 'Instructions', '~> 1.0.0'
   pod 'MessageKit'
+  pod 'Firebase/Messaging'
 
   # Pods for controllmemusample
 

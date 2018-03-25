@@ -46,6 +46,8 @@
 		B99B48262064DBF000D7335F /* hashi.png in Resources */ = {isa = PBXBuildFile; fileRef = B99B48252064DBF000D7335F /* hashi.png */; };
 		B99B48282064E8D700D7335F /* uma.png in Resources */ = {isa = PBXBuildFile; fileRef = B99B48272064E8D700D7335F /* uma.png */; };
 		B99B482A20651ECE00D7335F /* kanematsu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B99B482920651ECE00D7335F /* kanematsu.jpg */; };
+		B99B482C2065257400D7335F /* Kanematsu_auditorium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */; };
+		B99B482E206536C400D7335F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B99B482D206536C300D7335F /* GoogleService-Info.plist */; };
 		B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */; };
 		B9D7D8E0203F2FA00028EF07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DF203F2FA00028EF07 /* ViewController.swift */; };
 		B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */; };
@@ -57,7 +59,6 @@
 		B9D7D8FE203F35740028EF07 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8FD203F35740028EF07 /* FirstViewController.swift */; };
 		B9D7D900203F35910028EF07 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8FF203F35910028EF07 /* SecondViewController.swift */; };
 		B9D7D902203F35AF0028EF07 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D901203F35AF0028EF07 /* ThirdViewController.swift */; };
-		B9D7D904203FEB850028EF07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */; };
 		B9D7D90820401C470028EF07 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D90720401C470028EF07 /* Login.storyboard */; };
 		B9D7D90C2040274C0028EF07 /* FirstSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90B2040274C0028EF07 /* FirstSelectViewController.swift */; };
 		B9D7D90E204027700028EF07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D90D204027700028EF07 /* LoginViewController.swift */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		14876070071AE01B4FF58E63 /* Pods-controllmemusample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-controllmemusample.release.xcconfig"; path = "Pods/Target Support Files/Pods-controllmemusample/Pods-controllmemusample.release.xcconfig"; sourceTree = "<group>"; };
 		4933FA21958E3CFA92A1C683 /* Pods_controllmemusample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_controllmemusample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91583032067A62E00D4E524 /* controllmemusample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = controllmemusample.entitlements; sourceTree = "<group>"; };
 		B917CF3F2049230C0074B846 /* Post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Post.png; sourceTree = "<group>"; };
 		B917CF4120497D3A0074B846 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		B917CF432049A83E0074B846 /* PurchasedChatlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedChatlist.swift; sourceTree = "<group>"; };
@@ -111,6 +113,8 @@
 		B99B48252064DBF000D7335F /* hashi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hashi.png; sourceTree = "<group>"; };
 		B99B48272064E8D700D7335F /* uma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uma.png; sourceTree = "<group>"; };
 		B99B482920651ECE00D7335F /* kanematsu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kanematsu.jpg; sourceTree = "<group>"; };
+		B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kanematsu_auditorium.jpg; sourceTree = "<group>"; };
+		B99B482D206536C300D7335F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D7D8DA203F2FA00028EF07 /* controllmemusample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controllmemusample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D7D8DF203F2FA00028EF07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +128,6 @@
 		B9D7D8FD203F35740028EF07 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		B9D7D8FF203F35910028EF07 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B9D7D901203F35AF0028EF07 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
-		B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D7D90720401C470028EF07 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B9D7D90B2040274C0028EF07 /* FirstSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSelectViewController.swift; sourceTree = "<group>"; };
 		B9D7D90D204027700028EF07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				B9FCD6C92059964D0022EB9E /* hart.png */,
+				B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */,
 				B99B482920651ECE00D7335F /* kanematsu.jpg */,
 				B97F9CEC204E966E00EADB20 /* event.png */,
 				B99B48272064E8D700D7335F /* uma.png */,
@@ -290,7 +294,8 @@
 		B9D7D8DC203F2FA00028EF07 /* controllmemusample */ = {
 			isa = PBXGroup;
 			children = (
-				B9D7D903203FEB840028EF07 /* GoogleService-Info.plist */,
+				B91583032067A62E00D4E524 /* controllmemusample.entitlements */,
+				B99B482D206536C300D7335F /* GoogleService-Info.plist */,
 				B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */,
 				B9D7D8DF203F2FA00028EF07 /* ViewController.swift */,
 				B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */,
@@ -377,6 +382,14 @@
 					B9D7D8D9203F2FA00028EF07 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -411,6 +424,7 @@
 				B935015D20412609000F554B /* ProductContribution.storyboard in Resources */,
 				B99B48282064E8D700D7335F /* uma.png in Resources */,
 				B9D7D8E8203F2FA00028EF07 /* LaunchScreen.storyboard in Resources */,
+				B99B482C2065257400D7335F /* Kanematsu_auditorium.jpg in Resources */,
 				B97F9D1B2050C3BF00EADB20 /* E.storyboard in Resources */,
 				B97F9CED204E966F00EADB20 /* event.png in Resources */,
 				B99B482A20651ECE00D7335F /* kanematsu.jpg in Resources */,
@@ -421,7 +435,6 @@
 				B9D7D8F4203F300E0028EF07 /* C.storyboard in Resources */,
 				B9D7D8F2203F2FFD0028EF07 /* B.storyboard in Resources */,
 				B93501902043D743000F554B /* productDetail.storyboard in Resources */,
-				B9D7D904203FEB850028EF07 /* GoogleService-Info.plist in Resources */,
 				B97F9CE3204A8A5200EADB20 /* trade.png in Resources */,
 				B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */,
 				B93501952043E5FC000F554B /* back22.png in Resources */,
@@ -429,6 +442,7 @@
 				B99B48262064DBF000D7335F /* hashi.png in Resources */,
 				B9E32B0120532554009ED8E9 /* MyPostProduct.storyboard in Resources */,
 				B97F9CF0204E973300EADB20 /* D.storyboard in Resources */,
+				B99B482E206536C400D7335F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +698,7 @@
 			baseConfigurationReference = E9FE34DCFA13CA0EF4AFE2DE /* Pods-controllmemusample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = controllmemusample/controllmemusample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TBZF3HX4JL;
 				INFOPLIST_FILE = controllmemusample/Info.plist;
@@ -700,6 +715,7 @@
 			baseConfigurationReference = 14876070071AE01B4FF58E63 /* Pods-controllmemusample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = controllmemusample/controllmemusample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TBZF3HX4JL;
 				INFOPLIST_FILE = controllmemusample/Info.plist;
